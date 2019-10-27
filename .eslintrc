@@ -1,0 +1,84 @@
+{
+	"parser": "babel-eslint",
+	"globals": {
+		"React": "readonly",
+		"ReactDOM": "readonly",
+		"PropTypes": "readonly"
+	},
+	"env": {
+		"es6": true,
+		"browser": true,
+		"node": true,
+		"jest": true
+	},
+	"extends": [
+		"plugin:react/recommended"
+	],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"rules": {
+		"no-compare-neg-zero": 2,
+		"no-cond-assign": 2,
+		"no-dupe-args": 2,
+		"no-dupe-keys": 2,
+		"no-duplicate-case": 2,
+		"no-empty": 2,
+		"no-empty-character-class": 2,
+		"no-ex-assign": 2,
+		"no-extra-boolean-cast": 2,
+		"no-extra-semi": 2,
+		"no-func-assign": 2,
+		"no-obj-calls": 2,
+		"no-regex-spaces": 2,
+		"no-sparse-arrays": 2,
+		"no-unsafe-finally": 2,
+		"no-unsafe-negation": 2,
+		"use-isnan": 2,
+		"valid-typeof": 2,
+		"no-empty-function": 2,
+		"no-eval": 2,
+		"no-extend-native": 2,
+		"no-fallthrough": 2,
+		"no-implied-eval": 2,
+		"no-invalid-this": 2,
+		"no-iterator": 2,
+		"no-labels": 2,
+		"no-lone-blocks": 2,
+		"no-new": 2,
+		"no-new-func": 2,
+		"no-new-wrappers": 2,
+		"no-octal": 2,
+		"no-octal-escape": 2,
+		"no-proto": 2,
+		"no-return-assign": 2,
+		"no-self-assign": 2,
+		"no-self-compare": 2,
+		"no-sequences": 2,
+		"no-unmodified-loop-condition": 2,
+		"no-useless-call": 2,
+		"radix": 2,
+		"require-await": 2,
+		"no-delete-var": 2,
+		"no-undef": 2,
+		"no-new-require": 2,
+		"no-const-assign": 2,
+		"prefer-const": 2,
+		"quotes": [
+			2,
+			"double",
+			{
+				"avoidEscape": true,
+				"allowTemplateLiterals": true
+			}
+		],
+		"no-shadow": 2,
+		"no-mixed-spaces-and-tabs": 2,
+		"space-before-blocks": 2,
+		"space-infix-ops": 2,
+		"keyword-spacing": 2,
+		"eqeqeq": 2
+	}
+}
