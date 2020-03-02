@@ -1,6 +1,6 @@
 # React Template
 
-This repository exists as a starting point for a new React application. The build system, unit testing and folder structure is all in place. Delete what you don't need and get started!
+This repository exists as a starting point for a new React 16 application (with hooks). The build system, unit testing and folder structure is all in place. Delete what you don't need and get started!
 
 This repository should be generic enough that most people can use it out of the box. It comes with an existing "hello world" application which you can build and run right away.
 
@@ -19,4 +19,4 @@ The npm scripts defined in package.json are designed for Windows, but they can b
 
 ## Why use this instead of create-react-app?
 
-Tools like create-react-app hide away all of the complexity of setting up a new project. They are great to start out with, but as soon as you want to customize or understand how it all works you'll have trouble. My goal is to expose all of the fine details so you can clearly see what is going on. This makes it easier to debug and tweak settings to fit your needs.
+Tools like create-react-app bring everything and the kitchen sink when setting up a new project. They are great to start out with, but as soon as you want to customize or understand how it all works you'll have trouble. My goal is bring only the basics and expose all of the details so you can clearly see what is going on. This makes it easier to debug and tweak settings to fit your needs.

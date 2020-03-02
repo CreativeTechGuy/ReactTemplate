@@ -3,7 +3,17 @@
 	"globals": {
 		"React": "readonly",
 		"ReactDOM": "readonly",
-		"PropTypes": "readonly"
+		"useState": "readonly",
+		"useEffect": "readonly",
+		"useContext": "readonly",
+		"useReducer": "readonly",
+		"useCallback": "readonly",
+		"useMemo": "readonly",
+		"useRef": "readonly",
+		"useImperativeHandle": "readonly",
+		"useLayoutEffect": "readonly",
+		"useDebugValue": "readonly",
+		"shallow": "readonly"
 	},
 	"env": {
 		"es6": true,
@@ -14,12 +24,18 @@
 	"extends": [
 		"plugin:react/recommended"
 	],
+	"plugins": [
+		"react-hooks"
+	],
 	"settings": {
 		"react": {
 			"version": "detect"
 		}
 	},
 	"rules": {
+		"react-hooks/rules-of-hooks": 2,
+		"react-hooks/exhaustive-deps": 2,
+		"react/prop-types": 0,
 		"no-compare-neg-zero": 2,
 		"no-cond-assign": 2,
 		"no-dupe-args": 2,
@@ -65,7 +81,6 @@
 		"no-undef": 2,
 		"no-new-require": 2,
 		"no-const-assign": 2,
-		"prefer-const": 2,
 		"quotes": [
 			2,
 			"double",

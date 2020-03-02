@@ -21,7 +21,16 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			"React": "react",
 			"ReactDOM": "react-dom",
-			"PropTypes": "prop-types"
+			"useState": ["react", "useState"],
+			"useEffect": ["react", "useEffect"],
+			"useContext": ["react", "useContext"],
+			"useReducer": ["react", "useReducer"],
+			"useCallback": ["react", "useCallback"],
+			"useMemo": ["react", "useMemo"],
+			"useRef": ["react", "useRef"],
+			"useImperativeHandle": ["react", "useImperativeHandle"],
+			"useLayoutEffect": ["react", "useLayoutEffect"],
+			"useDebugValue": ["react", "useDebugValue"]
 		}),
 		new MiniCssExtractPlugin({
 			filename: "[name]-[contenthash].css",
@@ -76,9 +85,6 @@ module.exports = {
 								corejs: 3,
 								modules: false
 							}]
-						],
-						plugins: [
-							"@babel/plugin-proposal-class-properties"
 						]
 					}
 				}
@@ -128,5 +134,5 @@ module.exports = {
 		port: 7579,
 		host: "localhost"
 	},
-	devtool: "source-map"
+	devtool: "inline-source-map"
 };
