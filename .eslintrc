@@ -21,11 +21,12 @@
 		"node": true,
 		"jest": true
 	},
-	"extends": [
-		"plugin:react/recommended"
-	],
 	"plugins": [
 		"react-hooks"
+	],
+	"extends": [
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended"
 	],
 	"settings": {
 		"react": {
