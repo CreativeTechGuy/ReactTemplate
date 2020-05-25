@@ -7,7 +7,7 @@ export default function RandomNumber({
 	const [number, setNumber] = useState(() => rand(min, max));
 
 	const onMouseMove = useCallback(() => {
-		setNumber(rand(min,max))
+		setNumber(rand(min,max));
 	}, [min, max]);
 
 	return (

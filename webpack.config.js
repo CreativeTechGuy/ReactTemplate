@@ -4,6 +4,8 @@ const TerserPlugin = require("terser-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlBeautifyPlugin = require("html-beautify-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -51,6 +53,10 @@ module.exports = {
 				}
 			}
 		}),
+		new OptimizeCssAssetsPlugin(),
+		new CopyWebpackPlugin([
+			{ from: "static" }
+		])
 		(process.env.SHOW_BUNDLE_ANALYSIS === "true" ? new BundleAnalyzerPlugin({
 			analyzerMode: "static",
 			reportFilename: "../build/bundleAnalysis.html",
@@ -113,23 +119,18 @@ module.exports = {
 	optimization: {
 		minimizer: [
 			new TerserPlugin({
+				extractComments: false,
+                terserOptions: {
+                    output: {
+                        comments: /@license/i,
+                    }
+                },
 				parallel: true
 			})
 		],
 		usedExports: true
 	},
 	devServer: {
-		publicPath: "/",
-		contentBase: "dist",
-		index: "index.html",
-		openPage: "index.html",
-		historyApiFallback: {
-			rewrites: [
-				{ from: /^\/$/, to: "index.html" }
-			]
-		},
-		writeToDisk: true,
-		serveIndex: false,
 		https: true,
 		port: 7579,
 		host: "localhost"
