@@ -1,5 +1,13 @@
-import App from "src/components/app";
+import React from "react";
+import { render, screen } from "@testing-library/react";
 
-test("App is rendered", () => {
-	const wrapper = shallow(<App></App>);
+import App from "components/app";
+
+describe("App", () => {
+	test("is rendered", async () => {
+		render(<App />);
+		await screen.findByText("Hello World", {
+			exact: false
+		});
+	});
 });

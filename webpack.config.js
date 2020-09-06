@@ -1,4 +1,3 @@
-const webpack = require("webpack");
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
@@ -6,34 +5,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const HtmlBeautifyPlugin = require("html-beautify-webpack-plugin");
 
-const isProduction = process.env.NODE_ENV === "production";
+module.exports = (env = {}, argv = {}) => {
+	const isProduction = argv.mode === "production";
 
-module.exports = {
-	mode: isProduction ? "production" : "development",
-	context: path.resolve(__dirname, "src"),
-	entry: "./index.js",
-	output: {
-		path: path.resolve(__dirname, "dist"),
-		filename: "[name]-[contenthash].js",
-		libraryTarget: "umd"
-	},
-	plugins: [
-		new webpack.ProvidePlugin({
-			"React": "react",
-			"ReactDOM": "react-dom",
-			"useState": ["react", "useState"],
-			"useEffect": ["react", "useEffect"],
-			"useContext": ["react", "useContext"],
-			"useReducer": ["react", "useReducer"],
-			"useCallback": ["react", "useCallback"],
-			"useMemo": ["react", "useMemo"],
-			"useRef": ["react", "useRef"],
-			"useImperativeHandle": ["react", "useImperativeHandle"],
-			"useLayoutEffect": ["react", "useLayoutEffect"],
-			"useDebugValue": ["react", "useDebugValue"]
-		}),
+	const plugins = [
 		new MiniCssExtractPlugin({
 			filename: "[name]-[contenthash].css",
 		}),
@@ -43,97 +19,98 @@ module.exports = {
 				removeScriptTypeAttributes: true,
 			}
 		}),
-		new HtmlBeautifyPlugin({
-			config: {
-				html: {
-					"extra_liners": [],
-					"indent_with_tabs": true,
-					"indent_inner_html": false,
-					"max_preserve_newlines": 2
-				}
-			}
-		}),
 		new OptimizeCssAssetsPlugin(),
-		new CopyWebpackPlugin([
-			{ from: "static" }
-		])
-		(process.env.SHOW_BUNDLE_ANALYSIS === "true" ? new BundleAnalyzerPlugin({
+		new CopyWebpackPlugin({
+			patterns: [
+				{ from: "static" }
+			]
+		})
+	];
+	if (env.showBundleAnalysis) {
+		plugins.push(new BundleAnalyzerPlugin({
 			analyzerMode: "static",
-			reportFilename: "../build/bundleAnalysis.html",
+			reportFilename: "../temp/bundleAnalysis.html",
 			defaultSizes: "stat",
 			openAnalyzer: true
-		}) : null)
-	].filter(item => item !== null),
-	resolve: {
-		alias: {
-			assets: path.resolve(__dirname, "src/assets"),
-			components: path.resolve(__dirname, "src/components"),
-			config: path.resolve(__dirname, "src/config"),
-			styles: path.resolve(__dirname, "src/styles"),
-			utils: path.resolve(__dirname, "src/utils")
+		}));
+	}
+	return {
+		mode: isProduction ? "production" : "development",
+		context: path.resolve(__dirname, "src"),
+		entry: "./index.js",
+		output: {
+			path: path.resolve(__dirname, "dist"),
+			filename: "[name]-[contenthash].js",
+			libraryTarget: "umd"
 		},
-		extensions: [".js"]
-	},
-	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: {
-					loader: "babel-loader",
-					options: {
-						presets: [
-							["@babel/react", {
-								useBuiltIns: true
-							}],
-							["@babel/preset-env", {
-								useBuiltIns: "usage",
-								corejs: 3,
-								modules: false
-							}]
-						]
-					}
-				}
-			},
-			{
-				test: /\.s?css$/,
-				use: [
-					{
-						loader: MiniCssExtractPlugin.loader,
+		plugins: plugins,
+		resolve: {
+			modules: [
+				"src",
+				"node_modules"
+			],
+			extensions: [".js"]
+		},
+		module: {
+			rules: [
+				{
+					test: /\.js$/,
+					exclude: /node_modules/,
+					use: {
+						loader: "babel-loader",
 						options: {
-							hmr: !isProduction
+							presets: [
+								["@babel/react", {
+									useBuiltIns: true
+								}],
+								["@babel/preset-env", {
+									useBuiltIns: "usage",
+									corejs: 3
+								}]
+							]
+						}
+					}
+				},
+				{
+					test: /\.s?css$/,
+					use: [
+						{
+							loader: MiniCssExtractPlugin.loader,
+							options: {
+								hmr: !isProduction
+							}
+						},
+						"css-loader",
+						"sass-loader"
+					]
+				},
+				{
+					test: /\.(png|svg|jpg|gif)$/,
+					use: [
+						"file-loader",
+					]
+				}
+			]
+		},
+		optimization: {
+			minimizer: [
+				new TerserPlugin({
+					extractComments: false,
+					terserOptions: {
+						output: {
+							comments: /@license/i,
 						}
 					},
-					"css-loader",
-					"sass-loader"
-				]
-			},
-			{
-				test: /\.(png|svg|jpg|gif)$/,
-				use: [
-					"file-loader",
-				]
-			}
-		]
-	},
-	optimization: {
-		minimizer: [
-			new TerserPlugin({
-				extractComments: false,
-                terserOptions: {
-                    output: {
-                        comments: /@license/i,
-                    }
-                },
-				parallel: true
-			})
-		],
-		usedExports: true
-	},
-	devServer: {
-		https: true,
-		port: 7579,
-		host: "localhost"
-	},
-	devtool: "inline-source-map"
+					parallel: true
+				})
+			],
+			usedExports: true
+		},
+		devServer: {
+			https: true,
+			port: 7579,
+			host: "localhost"
+		},
+		devtool: "inline-source-map"
+	};
 };

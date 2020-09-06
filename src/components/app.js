@@ -1,6 +1,8 @@
 import Logo from "assets/react.svg";
+import React from "react";
+
 import constants from "config/constants";
-import RandomNumber from "components/randomNumber";
+import RandomNumber from "components/RandomNumber";
 
 export default function App() {
 	return (

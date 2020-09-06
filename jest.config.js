@@ -9,26 +9,25 @@ module.exports = {
 		"\\.html$": "<rootDir>/__mocks__/fileMock.js",
 		"\\.(css|scss)$": "identity-obj-proxy",
 		"file-loader": "<rootDir>/__mocks__/fileMock.js",
-		"^src/(.*)$": "<rootDir>/src/$1",
-		"^__tests__/(.*)$": "<rootDir>/__tests__/$1"
+		"^test/(.*)$": "<rootDir>/__tests__/$1"
 	},
-	"setupFiles": [
+	"setupFilesAfterEnv": [
 		"<rootDir>/jest.setup.js"
 	],
+	"globalTeardown": "<rootDir>/scripts/afterTest.js",
 	"testMatch": [
 		"<rootDir>/__tests__/**/*.test.js"
 	],
 	"collectCoverage": true,
 	"collectCoverageFrom": [
 		"<rootDir>/src/**/*.js",
-		"!**/utils/**",
 		"!**/config/**"
 	],
 	"coverageThreshold": {
 		"global": {
-			"statements": 75,
-			"functions": 75,
-			"lines": 75
+			"statements": 85,
+			"functions": 85,
+			"lines": 85
 		}
 	},
 	"coverageReporters": ["text-summary", "lcov"],

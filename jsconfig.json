@@ -4,11 +4,10 @@
 		"module": "commonjs",
 		"baseUrl": "./",
 		"paths": {
-			"assets/*": ["src/assets/*"],
-			"components/*": ["src/components/*"],
-			"config/*": ["src/config/*"],
-			"styles/*": ["src/styles/*"],
-			"utils/*": ["src/utils/*"]
+			"*": [
+				"node_modules",
+				"src/*"
+			]
 		},
 		"allowSyntheticDefaultImports": true
 	},

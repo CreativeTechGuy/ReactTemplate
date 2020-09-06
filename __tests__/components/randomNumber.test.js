@@ -1,14 +1,20 @@
-import RandomNumber from "src/components/randomNumber";
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
-test("RandomNumber is generated", () => {
-	const wrapper = shallow(<RandomNumber min={50} max={50}></RandomNumber>);
+import RandomNumber from "components/randomNumber";
 
-	expect(wrapper.text()).toBe("50");
-});
+describe("RandomNumber", () => {
+	test("is generated", async () => {
+		render(<RandomNumber min={50} max={50} />);
 
-test("RandomNumber is regenerated on mouse move", () => {
-	const wrapper = shallow(<RandomNumber min={1} max={100000000}></RandomNumber>);
-	const startingText = wrapper.text();
-	wrapper.simulate("mousemove");
-	expect(wrapper.text()).not.toBe(startingText);
+		await screen.findByText("50");
+	});
+
+	test("is regenerated on mouse move", () => {
+		const { container } = render(<RandomNumber min={1} max={100000000} />);
+
+		const startingText = container.textContent;
+		fireEvent.mouseMove(screen.queryByText(container.textContent));
+		expect(container.textContent).not.toStrictEqual(startingText);
+	});
 });
