@@ -1,36 +1,30 @@
+/* eslint-env node */
+
 module.exports = {
-	"moduleFileExtensions": ["js"],
-	"moduleDirectories": [
-		"node_modules",
-		"src"
-	],
-	"moduleNameMapper": {
-		"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-		"\\.html$": "<rootDir>/__mocks__/fileMock.js",
-		"\\.(css|scss)$": "identity-obj-proxy",
-		"file-loader": "<rootDir>/__mocks__/fileMock.js",
-		"^test/(.*)$": "<rootDir>/__tests__/$1"
+	clearMocks: true,
+	restoreMocks: true,
+	collectCoverage: true,
+	collectCoverageFrom: ["src/**"],
+	coverageDirectory: "coverage",
+	coverageReporters: ["text-summary", "lcov"],
+	coverageThreshold: {
+		global: {
+			branches: 95,
+			functions: 99,
+			lines: 99,
+			statements: 95,
+		},
 	},
-	"setupFilesAfterEnv": [
-		"<rootDir>/jest.setup.js"
-	],
-	"globalTeardown": "<rootDir>/scripts/afterTest.js",
-	"testMatch": [
-		"<rootDir>/__tests__/**/*.test.js"
-	],
-	"collectCoverage": true,
-	"collectCoverageFrom": [
-		"<rootDir>/src/**/*.js",
-		"!**/config/**"
-	],
-	"coverageThreshold": {
-		"global": {
-			"statements": 85,
-			"functions": 85,
-			"lines": 85
-		}
+	errorOnDeprecated: true,
+	moduleNameMapper: {
+		"\\.(jpg|jpeg|png|gif|webp|svg|bmp|woff|woff2|ttf)$": "<rootDir>/test/mocks/fileMock.js",
+		"\\.(css|less|scss|sass)$": "identity-obj-proxy",
+		"test/(.*)$": "<rootDir>/test/$1",
+		"~/(.*)$": "<rootDir>/src/$1",
 	},
-	"coverageReporters": ["text-summary", "lcov"],
-	"clearMocks": true,
-	"verbose": true
+	setupFilesAfterEnv: ["<rootDir>/test/setup.ts"],
+	globalTeardown: "<rootDir>/test/teardown.ts",
+	timers: "fake",
+	verbose: true,
+	testEnvironment: "jsdom",
 };

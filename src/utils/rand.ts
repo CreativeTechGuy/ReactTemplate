@@ -1,6 +1,4 @@
-export default function rand(min, max) {
-	min = parseInt(min, 10);
-	max = parseInt(max, 10);
+export function rand(min: number, max: number): number {
 	if (max < min) {
 		const temp = max;
 		max = min;
