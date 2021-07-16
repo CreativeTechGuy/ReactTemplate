@@ -1,22 +1,22 @@
 {
-	"compilerOptions": {
-		"noEmit": true,
-		"strict": true,
-		"target": "ESNext",
-		"module": "ESNext",
-		"lib": ["ESNext", "DOM", "DOM.Iterable"],
-		"allowJs": true,
-		"jsx": "preserve",
-		"esModuleInterop": true,
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"forceConsistentCasingInFileNames": true,
-		"paths": {
-			"test/*": ["test/*"],
-			"~/*": ["src/*"]
-		},
-		"typeRoots": ["src/types", "node_modules/@types"],
-		"baseUrl": "."
-	},
-	"include": ["src", "test"]
+    "compilerOptions": {
+        "noEmit": true,
+        "strict": true,
+        "target": "ESNext",
+        "module": "ESNext",
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
+        "allowJs": true,
+        "jsx": "preserve",
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "forceConsistentCasingInFileNames": true,
+        "paths": {
+            "test/*": ["test/*"],
+            "~/*": ["src/*"]
+        },
+        "typeRoots": ["src/types", "node_modules/@types"],
+        "baseUrl": "."
+    },
+    "include": ["src", "test"]
 }

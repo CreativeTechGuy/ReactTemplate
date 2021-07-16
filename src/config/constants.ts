@@ -1,4 +1,4 @@
 export const randomDefaults = {
-	MIN: 0,
-	MAX: 100,
+    MIN: 0,
+    MAX: 100,
 };
