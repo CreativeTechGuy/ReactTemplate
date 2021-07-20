@@ -1,6 +1,7 @@
 /* eslint-env node */
 
 const path = require("path");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -26,6 +27,9 @@ module.exports = function () {
             }),
             new HtmlWebpackPlugin({
                 template: "./index.html",
+            }),
+            new CopyWebpackPlugin({
+                patterns: [{ from: "static", noErrorOnMissing: true }],
             }),
         ],
         resolve: {
