@@ -4,7 +4,7 @@ module.exports = {
     clearMocks: true,
     restoreMocks: true,
     collectCoverage: true,
-    collectCoverageFrom: ["src/**"],
+    collectCoverageFrom: ["src/**/*.{js,jsx,ts,tsx}"],
     coverageDirectory: "coverage",
     coverageReporters: ["text-summary", "lcov"],
     coverageThreshold: {

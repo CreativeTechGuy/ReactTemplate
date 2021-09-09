@@ -15,8 +15,6 @@ module.exports = function (env = {}, argv = {}) {
         return webpackMerge(commonWebpackConfig, webpackProd(), {
             plugins: [
                 new BundleAnalyzerPlugin({
-                    analyzerMode: "static",
-                    reportFilename: "../temp/bundleAnalysis.html",
                     defaultSizes: "parsed",
                     openAnalyzer: true,
                 }),

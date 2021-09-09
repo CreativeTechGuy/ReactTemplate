@@ -10,6 +10,15 @@
         https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
 */
 
+const baseRestrictedImports = {
+    patterns: [
+        {
+            group: ["../*"],
+            message: "Usage of relative parent imports is not allowed.",
+        },
+    ],
+};
+
 module.exports = {
     plugins: ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "jest", "testing-library", "import"],
     extends: ["eslint:recommended", "plugin:react-hooks/recommended"],
@@ -43,7 +52,7 @@ module.exports = {
             parserOptions: {
                 sourceType: "module",
                 project: "./tsconfig.json",
-                tsconfigRootDir: ".",
+                tsconfigRootDir: __dirname,
             },
             files: ["*.ts", "*.tsx"],
             rules: {
@@ -60,6 +69,7 @@ module.exports = {
                 "no-throw-literal": "off",
                 "@typescript-eslint/no-throw-literal": "error",
                 "no-unused-expressions": "off",
+                "@typescript-eslint/prefer-regexp-exec": "off",
                 "@typescript-eslint/no-unused-expressions": "error",
                 "@typescript-eslint/unbound-method": "off",
                 "@typescript-eslint/no-non-null-assertion": "off",
@@ -77,7 +87,7 @@ module.exports = {
                         allowTypedFunctionExpressions: true,
                     },
                 ],
-                "@typescript-eslint/explicit-member-accessibility": "error",
+                "@typescript-eslint/explicit-member-accessibility": "warn",
                 "@typescript-eslint/no-base-to-string": "error",
                 "@typescript-eslint/no-confusing-non-null-assertion": "error",
                 "@typescript-eslint/no-confusing-void-expression": "error",
@@ -98,6 +108,7 @@ module.exports = {
                 "@typescript-eslint/prefer-optional-chain": "warn",
                 "@typescript-eslint/prefer-readonly": "warn",
                 "@typescript-eslint/prefer-ts-expect-error": "warn",
+                "@typescript-eslint/prefer-return-this-type": "error",
                 "@typescript-eslint/prefer-string-starts-ends-with": "warn",
                 "@typescript-eslint/require-array-sort-compare": "error",
                 "@typescript-eslint/unified-signatures": "warn",
@@ -148,6 +159,7 @@ module.exports = {
                 "react/react-in-jsx-scope": "off",
                 "react/prop-types": "off",
                 "react/display-name": "off",
+                "react/no-unescaped-entities": "off",
                 "react/no-access-state-in-setstate": "error",
                 "react/no-array-index-key": "error",
                 "react/no-danger": "error",
@@ -168,6 +180,7 @@ module.exports = {
                 "no-restricted-imports": [
                     "warn",
                     {
+                        ...baseRestrictedImports,
                         paths: [
                             {
                                 name: "react",
@@ -189,7 +202,7 @@ module.exports = {
         },
         {
             extends: ["plugin:jest/recommended", "plugin:jest/style"],
-            files: ["*.test.js", "*.test.ts", "*.test.jsx", "*.test.tsx"],
+            files: ["*.test.js", "*.test.ts", "*.test.jsx", "*.test.tsx", "test/**"],
             globals: {
                 screen: "off",
             },
@@ -206,6 +219,7 @@ module.exports = {
                 ],
                 "jest/prefer-spy-on": "warn",
                 "jest/lowercase-name": ["warn", { ignoreTopLevelDescribe: true }],
+                "@typescript-eslint/naming-convention": "off",
             },
         },
         {
@@ -219,6 +233,8 @@ module.exports = {
                     },
                 ],
                 "testing-library/prefer-wait-for": "warn",
+                "testing-library/no-unnecessary-act": ["warn", { isStrict: true }],
+                "testing-library/prefer-query-by-disappearance": "warn",
             },
         },
     ],
@@ -325,6 +341,6 @@ module.exports = {
                 message: "Don't use the Boolean function. Use a strict comparison instead.",
             },
         ],
-        "import/no-relative-parent-imports": "warn",
+        "no-restricted-imports": ["warn", baseRestrictedImports],
     },
 };

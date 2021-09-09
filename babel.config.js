@@ -2,14 +2,6 @@
 
 module.exports = (api) => {
     const isTest = api.env("test");
-    let additionalBabelEnvConfigs = {};
-    if (isTest) {
-        additionalBabelEnvConfigs = {
-            targets: {
-                node: "current",
-            },
-        };
-    }
     return {
         presets: [
             [
@@ -19,7 +11,13 @@ module.exports = (api) => {
                     useBuiltIns: "usage",
                     corejs: 3,
                     shippedProposals: true,
-                    ...additionalBabelEnvConfigs,
+                    ...(isTest
+                        ? {
+                              targets: {
+                                  node: "current",
+                              },
+                          }
+                        : {}),
                 },
             ],
             [

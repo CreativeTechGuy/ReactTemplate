@@ -9,10 +9,10 @@ module.exports = function () {
             static: false,
             compress: true,
             host: "localhost",
-            firewall: false,
+            allowedHosts: "all",
             client: {
-                port: 7579,
                 logging: "verbose",
+                overlay: false,
             },
             historyApiFallback: true,
         },

@@ -22,6 +22,8 @@ It also includes all of the nice-to-haves to ensure that you code is high qualit
 
 ## NPM scripts
 
+This repo assumes you are using Node 16+ and NPM 7+.
+
 -   `npm install` - install all dependencies. _Do this first before anything else_
 -   `npm run start` - starts a local server which can be accessed at http://localhost:7579. As long as this server is running it'll auto refresh whenever you save changes.
 -   `npm run release` - creates a release build of your application. All output files will be located in the dist folder. This also runs all of the checks to ensure the code works, is formatted, etc.
@@ -31,7 +33,7 @@ It also includes all of the nice-to-haves to ensure that you code is high qualit
 -   `npm run format` - runs Prettier to reformat all files
 -   `npm run ts-check` - runs the TypeScript compiler to see TypeScript errors
 -   `npm run spellcheck` - runs CSpell to see any typos. If the word is misidentified, add it to `cspell.json`.
--   `npm run test` - runs Jest and all unit tests located in test/\_\_tests\_\_.
+-   `npm run test` - runs Jest and all unit tests
 -   `npm run clean` - removes all auto-generated files and dependencies
 -   `npm run list-outdated-dependencies` - lists the dependencies that have newer versions available with links to their repository and changelog
 -   `npm run update-dependencies` - update and install all outdated dependencies

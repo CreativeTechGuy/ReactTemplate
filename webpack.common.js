@@ -14,7 +14,8 @@ module.exports = function () {
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "[name].[contenthash].js",
-            assetModuleFilename: "[name].[contenthash].[ext]",
+            assetModuleFilename: "[name].[contenthash][ext]",
+            hashDigestLength: 10,
         },
         plugins: [
             new MiniCssExtractPlugin({
@@ -22,7 +23,7 @@ module.exports = function () {
             }),
             new ForkTsCheckerWebpackPlugin({
                 typescript: {
-                    configFile: "../tsconfig.json",
+                    configFile: path.resolve(__dirname, "tsconfig.json"),
                 },
             }),
             new HtmlWebpackPlugin({

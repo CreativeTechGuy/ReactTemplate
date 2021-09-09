@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import Logo from "~/assets/react.svg";
+import Logo from "./react.svg";
 import { RandomNumber } from "~/components/RandomNumber";
 import { randomDefaults } from "~/config/constants";
 

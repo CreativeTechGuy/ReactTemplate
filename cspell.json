@@ -1,4 +1,15 @@
 {
-    "version": "0.1",
-    "words": ["browserconfig", "msapplication", "mstile", "lcov", "transpiling"]
+    "version": "0.2",
+    "words": [
+        "browserconfig",
+        "corejs",
+        "eqeqeq",
+        "iife",
+        "lcov",
+        "msapplication",
+        "mstile",
+        "setstate",
+        "transpiling"
+    ],
+    "ignorePaths": ["package.json", "package-lock.json", "/dist", "/temp", "/coverage"]
 }
