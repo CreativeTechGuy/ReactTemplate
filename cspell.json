@@ -11,5 +11,6 @@
         "setstate",
         "transpiling"
     ],
-    "ignorePaths": ["package.json", "package-lock.json", "/dist", "/temp", "/coverage"]
+    "ignorePaths": ["package.json", "package-lock.json"],
+    "useGitignore": true
 }
