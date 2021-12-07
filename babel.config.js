@@ -2,7 +2,9 @@
 
 module.exports = (api) => {
     const isTest = api.env("test");
+    const isDev = api.env("development");
     return {
+        plugins: [...(isDev ? ["react-refresh/babel"] : [])],
         presets: [
             [
                 "@babel/env",

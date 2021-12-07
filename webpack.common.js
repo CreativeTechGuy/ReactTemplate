@@ -4,7 +4,6 @@ const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const svgToMiniDataURI = require("mini-svg-data-uri");
 
 module.exports = function () {
@@ -18,9 +17,6 @@ module.exports = function () {
             hashDigestLength: 10,
         },
         plugins: [
-            new MiniCssExtractPlugin({
-                filename: "[name].[contenthash].css",
-            }),
             new ForkTsCheckerWebpackPlugin({
                 typescript: {
                     configFile: path.resolve(__dirname, "tsconfig.json"),
@@ -45,11 +41,6 @@ module.exports = function () {
                     test: /\.(j|t)s(x?)$/,
                     exclude: /node_modules/,
                     use: ["babel-loader"],
-                },
-                {
-                    test: /\.(s?)css$/,
-                    use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"],
-                    sideEffects: true,
                 },
                 {
                     test: /\.(woff2|woff|ttf|png|jpg|jpeg|gif|bmp|webp)$/,

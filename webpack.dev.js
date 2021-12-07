@@ -1,17 +1,33 @@
 /* eslint-env node */
 
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+
 module.exports = function () {
     return {
         mode: "development",
+        plugins: [
+            new ReactRefreshWebpackPlugin({
+                overlay: false,
+            }),
+        ],
+        module: {
+            rules: [
+                {
+                    test: /\.(s?)css$/,
+                    use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+                    sideEffects: true,
+                },
+            ],
+        },
         devServer: {
-            hot: false,
+            hot: true,
             port: 7579,
             static: false,
             compress: true,
             host: "localhost",
             allowedHosts: "all",
             client: {
-                logging: "verbose",
+                logging: "warn",
                 overlay: false,
             },
             historyApiFallback: true,
