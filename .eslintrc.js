@@ -17,6 +17,16 @@ const baseRestrictedImports = {
             message: "Usage of relative parent imports is not allowed.",
         },
     ],
+    paths: [
+        {
+            name: ".",
+            message: "Usage of local index imports is not allowed.",
+        },
+        {
+            name: "./index",
+            message: "Import from the source file instead.",
+        },
+    ],
 };
 
 module.exports = {
@@ -67,7 +77,13 @@ module.exports = {
                 "no-shadow": "off",
                 "@typescript-eslint/no-shadow": "error",
                 "no-throw-literal": "off",
-                "@typescript-eslint/no-throw-literal": "error",
+                "@typescript-eslint/no-throw-literal": [
+                    "error",
+                    {
+                        allowThrowingAny: false,
+                        allowThrowingUnknown: false,
+                    },
+                ],
                 "no-unused-expressions": "off",
                 "@typescript-eslint/prefer-regexp-exec": "off",
                 "@typescript-eslint/no-unused-expressions": "error",
@@ -97,6 +113,7 @@ module.exports = {
                 "@typescript-eslint/no-unnecessary-boolean-literal-compare": "warn",
                 "@typescript-eslint/no-unnecessary-condition": "warn",
                 "@typescript-eslint/no-unnecessary-qualifier": "warn",
+                "@typescript-eslint/no-useless-empty-export": "warn",
                 "@typescript-eslint/non-nullable-type-assertion-style": "warn",
                 "@typescript-eslint/prefer-for-of": "warn",
                 "@typescript-eslint/prefer-optional-chain": "warn",
@@ -136,6 +153,7 @@ module.exports = {
                 ],
                 "@typescript-eslint/no-extraneous-class": "error",
                 "@typescript-eslint/no-parameter-properties": "error",
+                "@typescript-eslint/no-redundant-type-constituents": "warn",
                 "@typescript-eslint/strict-boolean-expressions": [
                     "error",
                     {
@@ -168,8 +186,16 @@ module.exports = {
                 "react/void-dom-elements-no-children": "error",
                 "react/jsx-boolean-value": ["warn", "always"],
                 "react/jsx-fragments": "warn",
+                "react/jsx-key": [
+                    "error",
+                    {
+                        checkFragmentShorthand: true,
+                        checkKeyMustBeforeSpread: true,
+                        warnOnDuplicates: true,
+                    },
+                ],
                 "react/jsx-no-script-url": "error",
-                "react/jsx-no-useless-fragment": "warn",
+                "react/jsx-no-useless-fragment": ["warn", { allowExpressions: true }],
                 "react/jsx-pascal-case": "warn",
                 "react/jsx-props-no-spreading": "warn",
                 "no-restricted-imports": [
@@ -192,6 +218,8 @@ module.exports = {
                         unnamedComponents: "arrow-function",
                     },
                 ],
+                "react/hook-use-state": "warn",
+                "react/iframe-missing-sandbox": "warn",
                 "react/jsx-curly-brace-presence": ["warn", "never"],
             },
         },
@@ -202,8 +230,10 @@ module.exports = {
                 screen: "off",
             },
             rules: {
-                "jest/no-if": "error",
+                "jest/no-conditional-in-test": "error",
                 "jest/no-test-return-statement": "error",
+                "jest/prefer-comparison-matcher": "warn",
+                "jest/prefer-equality-matcher": "warn",
                 "jest/prefer-strict-equal": "error",
                 "jest/require-top-level-describe": "error",
                 "jest/consistent-test-it": [
@@ -227,6 +257,7 @@ module.exports = {
                         assertFunctionNames: ["expect", "*.getBy*", "*.getAllBy*", "*.findBy*", "*.findAllBy*"],
                     },
                 ],
+                "testing-library/no-render-in-setup": "off",
                 "testing-library/prefer-wait-for": "warn",
             },
         },

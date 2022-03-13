@@ -13,5 +13,9 @@
         "transpiling"
     ],
     "ignorePaths": ["package.json", "package-lock.json"],
-    "useGitignore": true
+    "useGitignore": true,
+    "cache": {
+        "useCache": true,
+        "cacheLocation": "./cache/.cspell"
+    }
 }

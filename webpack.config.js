@@ -8,6 +8,7 @@ const webpackProd = require("./webpack.prod");
 
 module.exports = function (env = {}, argv = {}) {
     const isProduction = argv.mode === "production";
+    process.env.NODE_ENV = isProduction ? "production" : "development";
 
     const commonWebpackConfig = webpackCommon();
 
