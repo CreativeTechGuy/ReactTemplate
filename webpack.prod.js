@@ -1,6 +1,7 @@
 /* eslint-env node */
 
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const HTMLMinimizerPlugin = require("html-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = function () {
@@ -21,7 +22,7 @@ module.exports = function () {
             ],
         },
         optimization: {
-            minimizer: ["...", new CssMinimizerPlugin()],
+            minimizer: ["...", new CssMinimizerPlugin(), new HTMLMinimizerPlugin()],
             splitChunks: {
                 chunks: "all",
             },

@@ -20,6 +20,15 @@ module.exports = function () {
             new ForkTsCheckerWebpackPlugin({
                 typescript: {
                     configFile: path.resolve(__dirname, "tsconfig.json"),
+                    configOverwrite: {
+                        compilerOptions: {
+                            skipLibCheck: true,
+                            sourceMap: false,
+                            inlineSourceMap: false,
+                            declarationMap: false,
+                        },
+                        exclude: ["**/*.test.js", "**/*.test.jsx", "**/*.test.ts", "**/*.test.tsx"],
+                    },
                 },
             }),
             new HtmlWebpackPlugin({
