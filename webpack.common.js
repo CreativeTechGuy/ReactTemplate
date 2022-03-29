@@ -14,6 +14,7 @@ module.exports = function () {
             path: path.resolve(__dirname, "dist"),
             filename: "[name].[contenthash].js",
             assetModuleFilename: "[name].[contenthash][ext]",
+            publicPath: "/",
             hashDigestLength: 10,
         },
         plugins: [

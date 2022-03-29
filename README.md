@@ -24,7 +24,7 @@ It also includes all of the nice-to-haves to ensure that you code is high qualit
 
 This repo assumes you are using Node 16+ and NPM 7+.
 
--   `npm install` - install all dependencies. _Do this first before anything else_
+-   `npm clean-install` - install all dependencies. _Do this first before anything else_
 -   `npm run start` - starts a local server which can be accessed at http://localhost:7579. As long as this server is running it'll auto refresh whenever you save changes.
 -   `npm run release` - creates a release build of your application. All output files will be located in the dist folder. This also runs all of the checks to ensure the code works, is formatted, etc.
 -   `npm run bundle-analysis` - opens a bundle analysis UI showing the file size of each dependency in your output JavaScript bundle.

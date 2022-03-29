@@ -109,6 +109,19 @@ module.exports = {
                 "@typescript-eslint/no-confusing-non-null-assertion": "error",
                 "@typescript-eslint/no-confusing-void-expression": "error",
                 "@typescript-eslint/no-invalid-void-type": "error",
+                "@typescript-eslint/no-misused-promises": [
+                    "error",
+                    {
+                        checksConditionals: true,
+                        checksVoidReturn: {
+                            arguments: false,
+                            attributes: false,
+                            properties: true,
+                            returns: true,
+                            variables: true,
+                        },
+                    },
+                ],
                 "@typescript-eslint/no-require-imports": "error",
                 "@typescript-eslint/no-unnecessary-boolean-literal-compare": "warn",
                 "@typescript-eslint/no-unnecessary-condition": "warn",
@@ -129,6 +142,20 @@ module.exports = {
                 "@typescript-eslint/method-signature-style": "warn",
                 "@typescript-eslint/naming-convention": [
                     "warn",
+                    {
+                        selector: [
+                            "classProperty",
+                            "objectLiteralProperty",
+                            "typeProperty",
+                            "classMethod",
+                            "objectLiteralMethod",
+                            "typeMethod",
+                            "accessor",
+                            "enumMember",
+                        ],
+                        format: null,
+                        modifiers: ["requiresQuotes"],
+                    },
                     {
                         selector: "default",
                         format: ["camelCase"],
