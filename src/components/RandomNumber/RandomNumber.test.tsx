@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEventSetup } from "test/helpers/userEventSetup";
 import { RandomNumber } from "./RandomNumber";
 
 describe("RandomNumber", () => {
@@ -11,10 +11,11 @@ describe("RandomNumber", () => {
         });
     });
 
-    test("is regenerated on mouse click", () => {
+    test("is regenerated on mouse click", async () => {
         render(<RandomNumber min={0} max={10} />);
+        const user = userEventSetup();
 
-        userEvent.click(
+        await user.click(
             screen.getByRole("button", {
                 name: "2",
             })

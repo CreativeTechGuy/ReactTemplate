@@ -1,6 +1,6 @@
 # React Template
 
-This repository exists as a starting point for a new React 17 application (with hooks). The build system, testing, linting, formatting, compiling, spellchecking and more are all pre-configured.
+This repository exists as a starting point for a new React 18 application (with hooks). The build system, testing, linting, formatting, compiling, spellchecking and more are all pre-configured.
 
 This repository should be generic enough that most people can use it out of the box. It comes with an existing "hello world" application which you can build and run right away.
 

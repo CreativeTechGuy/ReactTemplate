@@ -284,6 +284,7 @@ module.exports = {
                         assertFunctionNames: ["expect", "*.getBy*", "*.getAllBy*", "*.findBy*", "*.findAllBy*"],
                     },
                 ],
+                "testing-library/no-global-regexp-flag-in-query": "warn",
                 "testing-library/no-render-in-setup": "off",
                 "testing-library/prefer-wait-for": "warn",
             },
