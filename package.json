@@ -9,7 +9,7 @@
         "build:production": "npm run clean:dist && webpack --mode=production",
         "build:development": "npm run clean:dist && webpack --mode=development",
         "bundle-analysis": "webpack --mode=production --env showBundleAnalysis",
-        "lint": "eslint . --max-warnings 0 --cache --cache-location ./cache/.eslint/",
+        "lint": "eslint . --max-warnings 0",
         "lint:fix": "npm run lint -- --fix",
         "test": "jest",
         "ts-check": "tsc --skipLibCheck",
