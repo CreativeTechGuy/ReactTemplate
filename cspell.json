@@ -1,17 +1,6 @@
 {
     "version": "0.2",
-    "words": [
-        "browserconfig",
-        "corejs",
-        "eqeqeq",
-        "iife",
-        "lcov",
-        "msapplication",
-        "mstile",
-        "pmmmwh",
-        "setstate",
-        "transpiling"
-    ],
+    "words": ["browserconfig", "corejs", "lcov", "msapplication", "mstile", "transpiling"],
     "ignorePaths": ["package.json", "package-lock.json"],
     "useGitignore": true,
     "cache": {

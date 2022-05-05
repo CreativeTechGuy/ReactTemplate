@@ -1,3 +1,4 @@
+// cspell:words setstate, eqeqeq, iife
 /* eslint-env node */
 /*
     ESLint Rule Documentation Sites
@@ -179,7 +180,7 @@ module.exports = {
                     },
                 ],
                 "@typescript-eslint/no-extraneous-class": "error",
-                "@typescript-eslint/no-parameter-properties": "error",
+                "@typescript-eslint/parameter-properties": "error",
                 "@typescript-eslint/no-redundant-type-constituents": "warn",
                 "@typescript-eslint/strict-boolean-expressions": [
                     "error",

@@ -1,3 +1,4 @@
+// cspell:words pmmmwh
 /* eslint-env node */
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");

@@ -6,9 +6,8 @@ const webpackCommon = require("./webpack.common");
 const webpackDev = require("./webpack.dev");
 const webpackProd = require("./webpack.prod");
 
-module.exports = function (env = {}, argv = {}) {
-    const isProduction = argv.mode === "production";
-    process.env.NODE_ENV = isProduction ? "production" : "development";
+module.exports = function (env = {}) {
+    const isProduction = process.env.NODE_ENV === "production";
 
     const commonWebpackConfig = webpackCommon();
 

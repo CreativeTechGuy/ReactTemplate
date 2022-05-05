@@ -6,6 +6,14 @@ This repository should be generic enough that most people can use it out of the 
 
 It also includes all of the nice-to-haves to ensure that you code is high quality and follows best practices. This is very helpful for a beginner who needs nudges in the right direction but also helps an expert focus on the higher level problems and not worry about missing smaller errors.
 
+## Setup
+
+-   Be sure you have [Node 16+ installed](https://nodejs.org/en/download/)
+-   If you are on Windows, be sure you are either using [GitBash which comes with Git](https://git-scm.com/download/win) or [WSL](https://docs.microsoft.com/en-us/windows/wsl/install).
+    -   Alternatively, you can update the scripts in `package.json` to not use Bash commands like `rm`.
+-   Run `npm ci` to install dependencies
+-   Run `npm run start` to start the dev server and visit the link provided in the terminal to view it in your browser
+
 ## Core Dependencies Included
 
 -   [React](https://reactjs.org/docs/getting-started.html) (JavaScript UI framework)

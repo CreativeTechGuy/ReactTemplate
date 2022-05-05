@@ -24,7 +24,9 @@ module.exports = {
     },
     setupFilesAfterEnv: ["<rootDir>/test/setup.ts"],
     globalTeardown: "<rootDir>/test/teardown.ts",
-    timers: "modern",
+    fakeTimers: {
+        enableGlobally: true,
+    },
     verbose: true,
     testEnvironment: "jsdom",
 };
