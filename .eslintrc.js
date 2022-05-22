@@ -34,7 +34,7 @@ module.exports = {
     plugins: ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "jest", "testing-library", "import"],
     extends: ["eslint:recommended", "plugin:react-hooks/recommended"],
     env: {
-        es6: true,
+        es2022: true,
         browser: true,
     },
     reportUnusedDisableDirectives: true,

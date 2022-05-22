@@ -5,6 +5,6 @@
     "useGitignore": true,
     "cache": {
         "useCache": true,
-        "cacheLocation": "./cache/.cspell"
+        "cacheLocation": "./node_modules/.cache/cspell/.cspell"
     }
 }
