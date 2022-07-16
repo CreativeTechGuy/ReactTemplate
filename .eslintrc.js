@@ -90,6 +90,7 @@ module.exports = {
                 "@typescript-eslint/no-unused-expressions": "error",
                 "@typescript-eslint/unbound-method": "off",
                 "@typescript-eslint/no-non-null-assertion": "off",
+                "@typescript-eslint/consistent-generic-constructors": ["warn", "constructor"],
                 "@typescript-eslint/consistent-type-assertions": [
                     "warn",
                     {
