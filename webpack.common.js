@@ -28,7 +28,7 @@ module.exports = function () {
                             inlineSourceMap: false,
                             declarationMap: false,
                         },
-                        exclude: ["**/*.test.js", "**/*.test.jsx", "**/*.test.ts", "**/*.test.tsx"],
+                        exclude: ["**/*.test.js", "**/*.test.jsx", "**/*.test.ts", "**/*.test.tsx", "test/**"],
                     },
                 },
             }),

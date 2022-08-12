@@ -1,6 +1,6 @@
 {
     "version": "0.2",
-    "words": ["browserconfig", "corejs", "lcov", "msapplication", "mstile", "transpiling"],
+    "words": ["browserconfig", "corejs", "lcov", "loglevel", "msapplication", "mstile", "transpiling"],
     "ignorePaths": ["package.json", "package-lock.json"],
     "useGitignore": true,
     "cache": {
