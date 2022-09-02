@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
-import Logo from "./react.svg";
 import { RandomNumber } from "~/components/RandomNumber";
 import { randomDefaults } from "~/config/constants";
+import Logo from "./react.svg";
 
 export function App(): ReactElement {
     return (

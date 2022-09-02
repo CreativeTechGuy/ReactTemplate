@@ -3,6 +3,7 @@
     "words": ["browserconfig", "corejs", "lcov", "loglevel", "msapplication", "mstile", "transpiling"],
     "ignorePaths": ["package.json", "package-lock.json"],
     "useGitignore": true,
+    "validateDirectives": true,
     "cache": {
         "useCache": true,
         "cacheLocation": "./node_modules/.cache/cspell/.cspell"

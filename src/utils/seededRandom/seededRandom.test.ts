@@ -1,5 +1,5 @@
-import { SeededRandom } from "./seededRandom";
 import { Random } from "~/utils/random";
+import { SeededRandom } from "./seededRandom";
 
 describe("seededRandom", () => {
     test("seed creates a deterministic series", () => {
