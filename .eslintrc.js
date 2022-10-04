@@ -129,7 +129,7 @@ module.exports = {
                         format: ["camelCase"],
                     },
                     {
-                        selector: ["function", "enumMember", "property"],
+                        selector: ["function", "method", "enumMember", "property"],
                         format: ["camelCase", "PascalCase"],
                     },
                     {
