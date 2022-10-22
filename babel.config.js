@@ -37,5 +37,11 @@ module.exports = (api) => {
                 },
             ],
         ],
+        assumptions: {
+            ignoreFunctionLength: true,
+            constantReexports: true,
+            noClassCalls: true,
+            noDocumentAll: true,
+        },
     };
 };

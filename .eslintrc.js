@@ -558,6 +558,7 @@ module.exports = {
         ],
         // Import - https://github.com/import-js/eslint-plugin-import
         "import/no-duplicates": "warn",
+        "import/no-namespace": "warn",
         "import/order": [
             "warn",
             {

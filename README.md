@@ -9,8 +9,7 @@ It also includes all of the nice-to-haves to ensure that you code is high qualit
 ## Setup
 
 -   Be sure you have [Node 16+ installed](https://nodejs.org/en/download/)
--   If you are on Windows, be sure you are either using [GitBash which comes with Git](https://git-scm.com/download/win) or [WSL](https://docs.microsoft.com/en-us/windows/wsl/install).
-    -   Alternatively, you can update the scripts in `package.json` to not use Bash commands like `rm`.
+-   If you are on Windows, you probably want to be using either [GitBash which comes with Git](https://git-scm.com/download/win) or [WSL](https://docs.microsoft.com/en-us/windows/wsl/install).
 -   Run `npm ci` to install dependencies
 -   Run `npm run start` to start the dev server and visit the link provided in the terminal to view it in your browser
 
