@@ -1,4 +1,4 @@
-// cspell:words setstate, eqeqeq, iife, backreference, isnan, nonoctal, textnodes
+// cspell:words setstate, eqeqeq, iife, backreference, isnan, nonoctal, textnodes, nonconstructor
 /* eslint-env node */
 /*
     Rules in this file are in the same order as they appear in the docs sites to make it easy to find. (Usually this is alphabetical but sometimes there's subgroups.)
@@ -73,9 +73,8 @@ module.exports = {
                 "no-dupe-keys": "off",
                 "no-func-assign": "off",
                 "no-import-assign": "off",
-                "no-new-symbol": "off",
+                "no-new-native-nonconstructor": "off",
                 "no-obj-calls": "off",
-                "no-redeclare": "off",
                 "no-setter-return": "off",
                 "no-this-before-super": "off",
                 "no-undef": "off",
@@ -217,6 +216,13 @@ module.exports = {
                 "@typescript-eslint/no-invalid-this": "error",
                 "no-loss-of-precision": "off",
                 "@typescript-eslint/no-loss-of-precision": "error",
+                "no-redeclare": "off",
+                "@typescript-eslint/no-redeclare": [
+                    "error",
+                    {
+                        ignoreDeclarationMerge: false,
+                    },
+                ],
                 "no-shadow": "off",
                 "@typescript-eslint/no-shadow": [
                     "error",
@@ -437,7 +443,7 @@ module.exports = {
         "no-irregular-whitespace": "error",
         "no-loss-of-precision": "error",
         "no-misleading-character-class": "error",
-        "no-new-symbol": "error",
+        "no-new-native-nonconstructor": "error",
         "no-obj-calls": "error",
         "no-prototype-builtins": "error",
         "no-self-assign": "warn",
@@ -471,6 +477,7 @@ module.exports = {
         "no-else-return": "warn",
         "no-empty": "warn",
         "no-empty-function": "warn",
+        "no-empty-static-block": "warn",
         "no-eval": "error",
         "no-extend-native": "error",
         "no-extra-bind": "error",
