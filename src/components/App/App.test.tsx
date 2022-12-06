@@ -2,10 +2,11 @@ import { render, screen } from "@testing-library/react";
 import { App } from "./App";
 
 describe("App", () => {
-    test("is rendered", async () => {
+    test("is rendered", () => {
         render(<App />);
-        await screen.findByText("Hello World", {
+        screen.getByText("Hello World", {
             exact: false,
         });
+        expect(screen.getByRole("img")).toHaveAttribute("src", "react.svg");
     });
 });

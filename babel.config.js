@@ -37,6 +37,7 @@ module.exports = (api) => {
                 },
             ],
         ],
+        retainLines: isTest,
         assumptions: {
             ignoreFunctionLength: true,
             constantReexports: true,

@@ -356,6 +356,7 @@ module.exports = {
                 "jest/no-test-prefixes": "warn",
                 "jest/no-test-return-statement": "error",
                 "jest/prefer-comparison-matcher": "warn",
+                "jest/prefer-each": "warn",
                 "jest/prefer-equality-matcher": "warn",
                 "jest/prefer-lowercase-title": [
                     "warn",

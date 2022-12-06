@@ -20,10 +20,13 @@ module.exports = {
     },
     errorOnDeprecated: true,
     moduleNameMapper: {
-        "\\.(jpg|jpeg|png|gif|webp|svg|bmp|woff|woff2|ttf)$": "<rootDir>/test/mocks/fileMock.js",
         "\\.(css|less|scss|sass)$": "identity-obj-proxy",
         "test/(.*)$": "<rootDir>/test/$1",
         "~/(.*)$": "<rootDir>/src/$1",
+    },
+    transform: {
+        "\\.[jt]sx?$": "babel-jest",
+        "\\.(jpg|jpeg|png|gif|webp|svg|bmp|woff|woff2|ttf)$": "<rootDir>/test/transformers/importPathTransformer.js",
     },
     setupFilesAfterEnv: ["<rootDir>/test/setup.ts"],
     globalTeardown: "<rootDir>/test/teardown.ts",

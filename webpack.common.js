@@ -43,8 +43,12 @@ module.exports = function () {
             alias: {
                 "~": path.resolve(__dirname, "src"),
             },
+            extensionAlias: {
+                ".mjs": [".mts", ".mjs"],
+            },
             extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
         },
+        node: false,
         module: {
             rules: [
                 {
