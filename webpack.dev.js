@@ -46,6 +46,9 @@ module.exports = function () {
             },
             historyApiFallback: true,
         },
+        watchOptions: {
+            ignored: /node_modules/,
+        },
         devtool: "source-map",
     };
 };
