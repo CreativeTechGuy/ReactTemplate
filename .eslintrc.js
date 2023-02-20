@@ -583,6 +583,7 @@ module.exports = {
                 ],
                 alphabetize: {
                     order: "asc",
+                    orderImportKind: "desc",
                     caseInsensitive: true,
                 },
                 "newlines-between": "never",
