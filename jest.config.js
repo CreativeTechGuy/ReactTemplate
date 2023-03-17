@@ -36,4 +36,5 @@ module.exports = {
     verbose: true,
     testEnvironment: "jsdom",
     testTimeout: isDebuggerAttached ? 10000000 : 5000,
+    randomize: true,
 };

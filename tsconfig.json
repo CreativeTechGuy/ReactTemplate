@@ -3,15 +3,15 @@
         "noEmit": true,
         "strict": true,
         "target": "ESNext",
-        "module": "ESNext",
         "lib": ["ESNext", "DOM", "DOM.Iterable"],
         "allowJs": true,
         "jsx": "preserve",
         "esModuleInterop": true,
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
+        "moduleResolution": "bundler",
         "forceConsistentCasingInFileNames": true,
         "useUnknownInCatchVariables": true,
+        "noImplicitOverride": true,
+        "verbatimModuleSyntax": true,
         "paths": {
             "test/*": ["test/*"],
             "~/*": ["src/*"]
