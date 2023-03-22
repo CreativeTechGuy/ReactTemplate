@@ -370,7 +370,6 @@ module.exports = {
                 "jest/prefer-to-be": "warn",
                 "jest/prefer-to-contain": "warn",
                 "jest/prefer-to-have-length": "warn",
-                "jest/require-top-level-describe": "error",
                 "jest/valid-describe-callback": "error",
                 "jest/valid-expect": "error",
                 "jest/valid-expect-in-promise": "error",

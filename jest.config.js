@@ -4,7 +4,6 @@ const inspector = require("inspector");
 const isDebuggerAttached = inspector.url() !== undefined;
 
 module.exports = {
-    clearMocks: true,
     restoreMocks: true,
     collectCoverage: true,
     collectCoverageFrom: ["src/**/*.{js,jsx,ts,tsx}"],
