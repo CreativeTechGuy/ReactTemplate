@@ -105,7 +105,6 @@ module.exports = {
                 ],
                 "@typescript-eslint/explicit-member-accessibility": "warn",
                 "@typescript-eslint/explicit-module-boundary-types": "error",
-                "@typescript-eslint/member-delimiter-style": "warn",
                 "@typescript-eslint/method-signature-style": "warn",
                 "@typescript-eslint/naming-convention": [
                     "warn",
@@ -193,7 +192,12 @@ module.exports = {
                 "@typescript-eslint/prefer-string-starts-ends-with": "warn",
                 "@typescript-eslint/prefer-ts-expect-error": "warn",
                 "@typescript-eslint/require-array-sort-compare": "error",
-                "@typescript-eslint/restrict-plus-operands": "error",
+                "@typescript-eslint/restrict-plus-operands": [
+                    "error",
+                    {
+                        checkCompoundAssignments: true,
+                    },
+                ],
                 "@typescript-eslint/restrict-template-expressions": "error",
                 "@typescript-eslint/strict-boolean-expressions": [
                     "error",
@@ -201,6 +205,7 @@ module.exports = {
                         allowString: false,
                         allowNumber: false,
                         allowNullableObject: false,
+                        allowNullableEnum: false,
                     },
                 ],
                 "@typescript-eslint/triple-slash-reference": "warn",
@@ -241,7 +246,12 @@ module.exports = {
                     },
                 ],
                 "no-unused-expressions": "off",
-                "@typescript-eslint/no-unused-expressions": "warn",
+                "@typescript-eslint/no-unused-expressions": [
+                    "warn",
+                    {
+                        enforceForJSX: true,
+                    },
+                ],
                 "no-unused-vars": "off",
                 "@typescript-eslint/no-unused-vars": "warn",
                 "require-await": "off",
@@ -416,7 +426,12 @@ module.exports = {
     ],
     rules: {
         // Possible Problems - https://eslint.org/docs/latest/rules/#possible-problems
-        "array-callback-return": "error",
+        "array-callback-return": [
+            "error",
+            {
+                checkForEach: true,
+            },
+        ],
         "constructor-super": "error",
         "for-direction": "error",
         "getter-return": "error",
@@ -442,7 +457,12 @@ module.exports = {
         "no-import-assign": "error",
         "no-inner-declarations": ["error", "both"],
         "no-invalid-regexp": "error",
-        "no-irregular-whitespace": "error",
+        "no-irregular-whitespace": [
+            "error",
+            {
+                skipStrings: false,
+            },
+        ],
         "no-loss-of-precision": "error",
         "no-misleading-character-class": "error",
         "no-new-native-nonconstructor": "error",
@@ -459,11 +479,26 @@ module.exports = {
         "no-unmodified-loop-condition": "error",
         "no-unreachable": "warn",
         "no-unsafe-finally": "error",
-        "no-unsafe-negation": "error",
-        "no-unsafe-optional-chaining": "error",
+        "no-unsafe-negation": [
+            "error",
+            {
+                enforceForOrderingRelations: true,
+            },
+        ],
+        "no-unsafe-optional-chaining": [
+            "error",
+            {
+                disallowArithmeticOperators: true,
+            },
+        ],
         "no-unused-vars": "warn",
         "no-useless-backreference": "error",
-        "use-isnan": "error",
+        "use-isnan": [
+            "error",
+            {
+                enforceForIndexOf: true,
+            },
+        ],
         "valid-typeof": "error",
         // Suggestions - https://eslint.org/docs/latest/rules/#suggestions
         "consistent-return": "error",
@@ -483,13 +518,23 @@ module.exports = {
         "no-eval": "error",
         "no-extend-native": "error",
         "no-extra-bind": "error",
-        "no-extra-boolean-cast": "warn",
+        "no-extra-boolean-cast": [
+            "warn",
+            {
+                enforceForLogicalOperands: true,
+            },
+        ],
         "no-floating-decimal": "error",
         "no-global-assign": "error",
         "no-implicit-coercion": "error",
         "no-implicit-globals": "error",
         "no-implied-eval": "error",
-        "no-invalid-this": "error",
+        "no-invalid-this": [
+            "error",
+            {
+                capIsConstructor: false,
+            },
+        ],
         "no-labels": "error",
         "no-lone-blocks": "error",
         "no-multi-assign": "warn",
@@ -518,10 +563,27 @@ module.exports = {
                 selector: "CallExpression[callee.name='Boolean']",
                 message: "Don't use the Boolean function. Use a strict comparison instead.",
             },
+            {
+                selector: "TSEnumDeclaration",
+                message: "Use a type with a union of strings instead.",
+            },
+            {
+                selector: "TSTypeReference Identifier[name='React']",
+                message: "Import the type explicitly instead of using the React global.",
+            },
+            {
+                selector: "TSTypeReference Identifier[name='PropsWithChildren']",
+                message: "Explicitly declare children in your props type.",
+            },
         ],
-        "no-return-assign": "warn",
+        "no-return-assign": ["warn", "always"],
         "no-script-url": "error",
-        "no-sequences": "warn",
+        "no-sequences": [
+            "warn",
+            {
+                allowInParentheses: false,
+            },
+        ],
         "no-shadow": [
             "error",
             {
@@ -530,10 +592,20 @@ module.exports = {
         ],
         "no-shadow-restricted-names": "error",
         "no-throw-literal": "error",
-        "no-unused-expressions": "warn",
+        "no-unused-expressions": [
+            "warn",
+            {
+                enforceForJSX: true,
+            },
+        ],
         "no-useless-call": "error",
         "no-useless-catch": "warn",
-        "no-useless-computed-key": "warn",
+        "no-useless-computed-key": [
+            "warn",
+            {
+                enforceForClassMembers: true,
+            },
+        ],
         "no-useless-concat": "error",
         "no-useless-escape": "warn",
         "no-useless-rename": "warn",
