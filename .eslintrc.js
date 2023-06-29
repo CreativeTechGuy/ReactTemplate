@@ -1,4 +1,4 @@
-// cspell:words setstate, eqeqeq, iife, backreference, isnan, nonoctal, textnodes, nonconstructor
+// cspell:words setstate, eqeqeq, iife, backreference, isnan, nonoctal, textnodes, nonconstructor, typedefs
 /* eslint-env node */
 /*
     Rules in this file are in the same order as they appear in the docs sites to make it easy to find. (Usually this is alphabetical but sometimes there's subgroups.)
@@ -10,6 +10,7 @@
         https://github.com/jest-community/eslint-plugin-jest
         https://typescript-eslint.io/rules/
         https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
+        https://github.com/gund/eslint-plugin-deprecation
 */
 
 const baseRestrictedImports = {
@@ -32,11 +33,21 @@ const baseRestrictedImports = {
 };
 
 module.exports = {
-    plugins: ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "jest", "testing-library", "import"],
+    plugins: [
+        "@typescript-eslint",
+        "react",
+        "react-hooks",
+        "jsx-a11y",
+        "jest",
+        "testing-library",
+        "import",
+        "deprecation",
+    ],
     env: {
         es2022: true,
         browser: true,
     },
+    root: true,
     reportUnusedDisableDirectives: true,
     parser: "@babel/eslint-parser",
     parserOptions: {
@@ -69,7 +80,6 @@ module.exports = {
                 "getter-return": "off",
                 "no-const-assign": "off",
                 "no-dupe-args": "off",
-                "no-dupe-class-members": "off",
                 "no-dupe-keys": "off",
                 "no-func-assign": "off",
                 "no-import-assign": "off",
@@ -96,6 +106,7 @@ module.exports = {
                     },
                 ],
                 "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
+                "@typescript-eslint/consistent-type-exports": "error",
                 "@typescript-eslint/consistent-type-imports": "warn",
                 "@typescript-eslint/explicit-function-return-type": [
                     "error",
@@ -156,21 +167,26 @@ module.exports = {
                 "@typescript-eslint/no-for-in-array": "error",
                 "@typescript-eslint/no-inferrable-types": "warn",
                 "@typescript-eslint/no-invalid-void-type": "error",
+                "@typescript-eslint/no-meaningless-void-operator": "warn",
                 "@typescript-eslint/no-misused-new": "error",
                 "@typescript-eslint/no-misused-promises": "error",
                 "@typescript-eslint/no-namespace": "warn",
+                "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "warn",
+                "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
                 "@typescript-eslint/no-redundant-type-constituents": "warn",
                 "@typescript-eslint/no-require-imports": "error",
                 "@typescript-eslint/no-this-alias": "warn",
                 "@typescript-eslint/no-unnecessary-boolean-literal-compare": "warn",
                 "@typescript-eslint/no-unnecessary-condition": "warn",
                 "@typescript-eslint/no-unnecessary-qualifier": "warn",
-                "@typescript-eslint/no-unnecessary-type-assertion": "error",
+                "@typescript-eslint/no-unnecessary-type-arguments": "warn",
+                "@typescript-eslint/no-unnecessary-type-assertion": "warn",
                 "@typescript-eslint/no-unnecessary-type-constraint": "warn",
                 "@typescript-eslint/no-unsafe-argument": "error",
                 "@typescript-eslint/no-unsafe-assignment": "error",
                 "@typescript-eslint/no-unsafe-call": "error",
                 "@typescript-eslint/no-unsafe-enum-comparison": "warn",
+                "@typescript-eslint/no-unsafe-declaration-merging": "error",
                 "@typescript-eslint/no-unsafe-member-access": "error",
                 "@typescript-eslint/no-unsafe-return": "error",
                 "@typescript-eslint/no-useless-empty-export": "warn",
@@ -179,6 +195,7 @@ module.exports = {
                 "@typescript-eslint/parameter-properties": "error",
                 "@typescript-eslint/prefer-as-const": "warn",
                 "@typescript-eslint/prefer-for-of": "warn",
+                "@typescript-eslint/prefer-includes": "warn",
                 "@typescript-eslint/prefer-namespace-keyword": "warn",
                 "@typescript-eslint/prefer-nullish-coalescing": [
                     "warn",
@@ -188,6 +205,7 @@ module.exports = {
                 ],
                 "@typescript-eslint/prefer-optional-chain": "warn",
                 "@typescript-eslint/prefer-readonly": "warn",
+                "@typescript-eslint/prefer-reduce-type-parameter": "warn",
                 "@typescript-eslint/prefer-return-this-type": "error",
                 "@typescript-eslint/prefer-string-starts-ends-with": "warn",
                 "@typescript-eslint/prefer-ts-expect-error": "warn",
@@ -208,19 +226,28 @@ module.exports = {
                         allowNullableEnum: false,
                     },
                 ],
+                "@typescript-eslint/switch-exhaustiveness-check": "error",
                 "@typescript-eslint/triple-slash-reference": "warn",
+                "@typescript-eslint/unbound-method": "error",
                 "@typescript-eslint/unified-signatures": "warn",
                 // TypeScript Extension Rules - https://typescript-eslint.io/rules/#extension-rules
                 "default-param-last": "off",
                 "@typescript-eslint/default-param-last": "error",
                 "no-array-constructor": "off",
                 "@typescript-eslint/no-array-constructor": "error",
+                "no-dupe-class-members": "off",
+                "@typescript-eslint/no-dupe-class-members": "error",
                 "no-empty-function": "off",
                 "@typescript-eslint/no-empty-function": "warn",
                 "no-implied-eval": "off",
                 "@typescript-eslint/no-implied-eval": "error",
                 "no-invalid-this": "off",
-                "@typescript-eslint/no-invalid-this": "error",
+                "@typescript-eslint/no-invalid-this": [
+                    "error",
+                    {
+                        capIsConstructor: false,
+                    },
+                ],
                 "no-loss-of-precision": "off",
                 "@typescript-eslint/no-loss-of-precision": "error",
                 "no-redeclare": "off",
@@ -254,8 +281,24 @@ module.exports = {
                 ],
                 "no-unused-vars": "off",
                 "@typescript-eslint/no-unused-vars": "warn",
+                "no-use-before-define": "off",
+                "@typescript-eslint/no-use-before-define": [
+                    "warn",
+                    {
+                        functions: false,
+                        classes: false,
+                        variables: true,
+                        allowNamedExports: false,
+                        // TS extension options
+                        enums: true,
+                        typedefs: true,
+                        ignoreTypeReferences: false,
+                    },
+                ],
                 "require-await": "off",
                 "@typescript-eslint/require-await": "error",
+                // Other
+                "deprecation/deprecation": "warn",
             },
         },
         {
@@ -284,6 +327,7 @@ module.exports = {
                 "react/no-find-dom-node": "error",
                 "react/no-invalid-html-attribute": "warn",
                 "react/no-is-mounted": "error",
+                "react/no-object-type-as-default-prop": "error",
                 "react/no-redundant-should-component-update": "error",
                 "react/no-render-return-value": "error",
                 "react/no-string-refs": "error",
@@ -386,8 +430,21 @@ module.exports = {
                 "jest/valid-expect": "error",
                 "jest/valid-expect-in-promise": "error",
                 "jest/valid-title": "warn",
-                // Other
+            },
+        },
+        {
+            parser: "@typescript-eslint/parser",
+            parserOptions: {
+                sourceType: "module",
+                project: "./tsconfig.json",
+                tsconfigRootDir: __dirname,
+            },
+            files: ["*.test.ts", "*.test.tsx", "test/**/*.ts"],
+            rules: {
+                // TypeScript-specific test overrides
                 "@typescript-eslint/naming-convention": "off",
+                "@typescript-eslint/unbound-method": "off",
+                "jest/unbound-method": "error",
             },
         },
         {
@@ -438,7 +495,7 @@ module.exports = {
         "no-async-promise-executor": "error",
         "no-class-assign": "error",
         "no-compare-neg-zero": "error",
-        "no-cond-assign": "error",
+        "no-cond-assign": ["error", "always"],
         "no-const-assign": "error",
         "no-constant-condition": "error",
         "no-constructor-return": "error",
@@ -492,6 +549,15 @@ module.exports = {
             },
         ],
         "no-unused-vars": "warn",
+        "no-use-before-define": [
+            "warn",
+            {
+                functions: false,
+                classes: false,
+                variables: true,
+                allowNamedExports: false,
+            },
+        ],
         "no-useless-backreference": "error",
         "use-isnan": [
             "error",
