@@ -8,7 +8,7 @@ It also includes all of the nice-to-haves to ensure that you code is high qualit
 
 ## Setup
 
--   Be sure you have [Node 16+ installed](https://nodejs.org/en/download/)
+-   Be sure you have [the current LTS version of Node.js installed](https://nodejs.org/)
 -   If you are on Windows, you probably want to be using either [GitBash which comes with Git](https://git-scm.com/download/win) or [WSL](https://docs.microsoft.com/en-us/windows/wsl/install).
 -   Run `npm ci` to install dependencies
 -   Run `npm run start` to start the dev server and visit the link provided in the terminal to view it in your browser
@@ -29,15 +29,15 @@ It also includes all of the nice-to-haves to ensure that you code is high qualit
 
 ## NPM scripts
 
-This repo assumes you are using Node 16+ and NPM 7+.
-
 -   `npm clean-install` - install all dependencies. _Do this first before anything else_
 -   `npm run start` - starts a local server which can be accessed at http://localhost:7579. As long as this server is running it'll auto refresh whenever you save changes.
 -   `npm run release` - creates a release build of your application. All output files will be located in the dist folder. This also runs all of the checks to ensure the code works, is formatted, etc.
+-   `npm run verify` - checks the application without building
 -   `npm run bundle-analysis` - opens a bundle analysis UI showing the file size of each dependency in your output JavaScript bundle.
 -   `npm run lint` - runs ESLint enforcing good coding style and habits and erroring if any are broken.
     -   `npm run lint:fix` - fixes any auto-fixable ESLint errors
 -   `npm run format` - runs Prettier to reformat all files
+-   `npm run autofix` - fix all autofixable issues
 -   `npm run ts-check` - runs the TypeScript compiler to see TypeScript errors
 -   `npm run spellcheck` - runs CSpell to see any typos. If the word is misidentified, add it to `cspell.json`.
 -   `npm run test` - runs Jest and all unit tests

@@ -1,9 +1,7 @@
 // cspell:words pmmmwh
-/* eslint-env node */
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-
-module.exports = function () {
+export default function () {
     return {
         mode: "development",
         plugins: [
@@ -51,4 +49,4 @@ module.exports = function () {
         },
         devtool: "source-map",
     };
-};
+}

@@ -1,17 +1,15 @@
-/* eslint-env node */
+import path from "path";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import svgToMiniDataURI from "mini-svg-data-uri";
 
-const path = require("path");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const svgToMiniDataURI = require("mini-svg-data-uri");
-
-module.exports = function () {
+export default function () {
     return {
-        context: path.resolve(__dirname, "src"),
+        context: path.resolve("./src"),
         entry: ["./index"],
         output: {
-            path: path.resolve(__dirname, "dist"),
+            path: path.resolve("./dist"),
             filename: "[name].[contenthash].js",
             assetModuleFilename: "[name].[contenthash][ext]",
             publicPath: "/",
@@ -20,7 +18,7 @@ module.exports = function () {
         plugins: [
             new ForkTsCheckerWebpackPlugin({
                 typescript: {
-                    configFile: path.resolve(__dirname, "tsconfig.json"),
+                    configFile: path.resolve("./tsconfig.json"),
                     configOverwrite: {
                         compilerOptions: {
                             skipLibCheck: true,
@@ -41,7 +39,7 @@ module.exports = function () {
         ],
         resolve: {
             alias: {
-                "~": path.resolve(__dirname, "src"),
+                "~": path.resolve("./src"),
             },
             extensionAlias: {
                 ".mjs": [".mts", ".mjs"],
@@ -71,4 +69,4 @@ module.exports = function () {
         },
         stats: "errors-warnings",
     };
-};
+}

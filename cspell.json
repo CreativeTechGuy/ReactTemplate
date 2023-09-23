@@ -1,11 +1,13 @@
 {
     "version": "0.2",
-    "words": ["browserconfig", "corejs", "lcov", "loglevel", "msapplication", "mstile", "transpiling"],
+    "words": ["autofix", "autofixable", "browserconfig", "corejs", "lcov", "msapplication", "mstile"],
     "ignorePaths": ["package.json", "package-lock.json"],
     "useGitignore": true,
     "validateDirectives": true,
     "cache": {
         "useCache": true,
         "cacheLocation": "./node_modules/.cache/cspell/.cspell"
-    }
+    },
+    "language": "en",
+    "dictionaries": ["html", "typescript", "css", "en-gb", "fonts", "npm"]
 }

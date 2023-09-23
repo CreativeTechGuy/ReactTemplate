@@ -1,15 +1,13 @@
-/* eslint-env node */
-
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const HTMLMinimizerPlugin = require("html-minimizer-webpack-plugin");
-const { LicenseWebpackPlugin } = require("license-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const packageJson = require("./package.json");
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import HTMLMinimizerPlugin from "html-minimizer-webpack-plugin";
+import { LicenseWebpackPlugin } from "license-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import TerserPlugin from "terser-webpack-plugin";
+import packageJson from "./package.json" assert { type: "json" };
 
 const ACCEPTABLE_LICENSES = ["MIT", "BSD-2-Clause", "BSD-3-Clause", "APACHE-2.0", "ISC", "Unlicense"];
 
-module.exports = function () {
+export default function () {
     return {
         mode: "production",
         plugins: [
@@ -57,4 +55,4 @@ module.exports = function () {
         },
         devtool: false,
     };
-};
+}

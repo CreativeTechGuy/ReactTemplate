@@ -44,7 +44,7 @@ module.exports = {
         "deprecation",
     ],
     env: {
-        es2022: true,
+        es2024: true,
         browser: true,
     },
     root: true,
@@ -210,12 +210,7 @@ module.exports = {
                 "@typescript-eslint/prefer-string-starts-ends-with": "warn",
                 "@typescript-eslint/prefer-ts-expect-error": "warn",
                 "@typescript-eslint/require-array-sort-compare": "error",
-                "@typescript-eslint/restrict-plus-operands": [
-                    "error",
-                    {
-                        checkCompoundAssignments: true,
-                    },
-                ],
+                "@typescript-eslint/restrict-plus-operands": "error",
                 "@typescript-eslint/restrict-template-expressions": "error",
                 "@typescript-eslint/strict-boolean-expressions": [
                     "error",
@@ -388,6 +383,7 @@ module.exports = {
                 "jest/globals": true,
             },
             rules: {
+                // Jest - https://github.com/jest-community/eslint-plugin-jest#rules
                 "jest/consistent-test-it": [
                     "warn",
                     {
@@ -399,6 +395,7 @@ module.exports = {
                 "jest/no-commented-out-tests": "warn",
                 "jest/no-conditional-expect": "error",
                 "jest/no-conditional-in-test": "error",
+                "jest/no-confusing-set-timeout": "error",
                 "jest/no-deprecated-functions": "error",
                 "jest/no-disabled-tests": "warn",
                 "jest/no-done-callback": "error",
@@ -451,16 +448,15 @@ module.exports = {
             files: ["*.test.jsx", "*.test.tsx"],
             rules: {
                 // React Testing Library - https://github.com/testing-library/eslint-plugin-testing-library
-                "testing-library/await-async-query": "error",
+                "testing-library/await-async-queries": "error",
                 "testing-library/await-async-utils": "error",
-                "testing-library/no-await-sync-query": "error",
+                "testing-library/no-await-sync-queries": "error",
                 "testing-library/no-container": "error",
                 "testing-library/no-debugging-utils": "warn",
                 "testing-library/no-dom-import": ["error", "react"],
                 "testing-library/no-global-regexp-flag-in-query": "warn",
                 "testing-library/no-node-access": "warn",
                 "testing-library/no-unnecessary-act": "warn",
-                "testing-library/no-wait-for-empty-callback": "error",
                 "testing-library/no-wait-for-multiple-assertions": "error",
                 "testing-library/no-wait-for-side-effects": "error",
                 "testing-library/no-wait-for-snapshot": "error",
@@ -469,7 +465,6 @@ module.exports = {
                 "testing-library/prefer-query-by-disappearance": "error",
                 "testing-library/prefer-screen-queries": "warn",
                 "testing-library/prefer-user-event": "error",
-                "testing-library/prefer-wait-for": "warn",
                 "testing-library/render-result-naming-convention": "error",
                 // Jest - https://github.com/jest-community/eslint-plugin-jest
                 "jest/expect-expect": [
@@ -606,9 +601,9 @@ module.exports = {
         "no-multi-assign": "warn",
         "no-new": "error",
         "no-new-func": "error",
-        "no-new-object": "error",
         "no-new-wrappers": "error",
         "no-nonoctal-decimal-escape": "error",
+        "no-object-constructor": "error",
         "no-octal": "error",
         "no-octal-escape": "error",
         "no-proto": "error",

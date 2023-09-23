@@ -5,7 +5,7 @@ const path = require("path");
 module.exports = {
     "*.{js,ts,jsx,tsx,json,html,xml,svg,css,scss,sass,md}": "cspell --no-progress --no-must-find-files",
     "*.{js,ts,jsx,tsx}": "eslint --max-warnings 0 --fix",
-    "*": "prettier --write --ignore-unknown --loglevel warn",
+    "*": "prettier --write --ignore-unknown --log-level warn",
     "src/**/*.{js,ts,jsx,tsx}": (paths) => {
         const relativePaths = paths.map((filePath) =>
             path.relative(__dirname, filePath).split(path.sep).join(path.posix.sep)

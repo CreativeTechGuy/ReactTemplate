@@ -1,12 +1,11 @@
-/* eslint-env node */
+import process from "process";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import { merge as webpackMerge } from "webpack-merge";
+import webpackCommon from "./webpack.common.mjs";
+import webpackDev from "./webpack.dev.mjs";
+import webpackProd from "./webpack.prod.mjs";
 
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const { merge: webpackMerge } = require("webpack-merge");
-const webpackCommon = require("./webpack.common");
-const webpackDev = require("./webpack.dev");
-const webpackProd = require("./webpack.prod");
-
-module.exports = function (env = {}) {
+export default function (env = {}) {
     const isProduction = process.env.NODE_ENV === "production";
 
     const commonWebpackConfig = webpackCommon();
@@ -25,4 +24,4 @@ module.exports = function (env = {}) {
         return webpackMerge(commonWebpackConfig, webpackProd());
     }
     return webpackMerge(commonWebpackConfig, webpackDev());
-};
+}
