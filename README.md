@@ -15,7 +15,7 @@ It also includes all of the nice-to-haves to ensure that you code is high qualit
 
 ## Core Dependencies Included
 
--   [React](https://reactjs.org/docs/getting-started.html) (JavaScript UI framework)
+-   [React](https://react.dev/learn) (JavaScript UI framework)
 -   [Webpack](https://webpack.js.org/) (Asset bundling)
 -   [TypeScript](https://www.typescriptlang.org/docs/handbook/intro.html) (JavaScript with Types)
 -   [Babel](https://babeljs.io/docs/en/) (Transpiling JavaScript for older browsers)
