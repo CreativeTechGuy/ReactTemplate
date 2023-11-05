@@ -18,7 +18,7 @@
         "ts-check": "tsc",
         "format": "prettier . --write --cache --log-level warn",
         "format:check": "prettier . --check --cache --log-level warn",
-        "spellcheck": "cspell --no-progress --dot \"**/*.{js,ts,jsx,tsx,json,html,xml,svg,css,scss,sass,md}\"",
+        "spellcheck": "cspell --no-progress --dot \"**/*.{js,ts,jsx,tsx,cjs,mjs,json,html,xml,svg,css,scss,sass,md}\"",
         "list-outdated-dependencies": "npm-check-updates --format repo,group --peer",
         "update-dependencies": "npm run list-outdated-dependencies -- -u && npm install && npm update && npm dedupe && npm run autofix && npm run release",
         "clean": "rimraf node_modules coverage dist",
