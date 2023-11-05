@@ -1,9 +1,7 @@
-/* eslint-env node */
-
-const inspector = require("inspector");
+import inspector from "inspector";
 const isDebuggerAttached = inspector.url() !== undefined;
 
-module.exports = {
+export default {
     restoreMocks: true,
     collectCoverage: true,
     collectCoverageFrom: ["src/**/*.{js,jsx,ts,tsx}"],

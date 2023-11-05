@@ -138,6 +138,10 @@ module.exports = {
                         format: ["camelCase"],
                     },
                     {
+                        selector: "import",
+                        format: ["camelCase", "PascalCase"],
+                    },
+                    {
                         selector: ["function", "method", "enumMember", "property"],
                         format: ["camelCase", "PascalCase"],
                     },
@@ -280,7 +284,7 @@ module.exports = {
                         // TS extension options
                         enums: true,
                         typedefs: true,
-                        ignoreTypeReferences: false,
+                        ignoreTypeReferences: true,
                     },
                 ],
                 "require-await": "off",
@@ -469,6 +473,13 @@ module.exports = {
                 ],
             },
         },
+        {
+            // This enables running the JS rules on these file types
+            files: ["*.cjs", "*.mjs"],
+            env: {
+                node: true,
+            },
+        },
     ],
     rules: {
         // Possible Problems - https://eslint.org/docs/latest/rules/#possible-problems
@@ -507,6 +518,8 @@ module.exports = {
             "error",
             {
                 skipStrings: false,
+                skipTemplates: false,
+                skipJSXText: false,
             },
         ],
         "no-loss-of-precision": "error",
@@ -548,12 +561,7 @@ module.exports = {
             },
         ],
         "no-useless-backreference": "error",
-        "use-isnan": [
-            "error",
-            {
-                enforceForIndexOf: true,
-            },
-        ],
+        "use-isnan": "error",
         "valid-typeof": "error",
         // Suggestions - https://eslint.org/docs/latest/rules/#suggestions
         "consistent-return": "error",
