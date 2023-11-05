@@ -231,18 +231,11 @@ module.exports = {
                 "no-array-constructor": "off",
                 "@typescript-eslint/no-array-constructor": "error",
                 "no-dupe-class-members": "off",
-                "@typescript-eslint/no-dupe-class-members": "error",
                 "no-empty-function": "off",
                 "@typescript-eslint/no-empty-function": "warn",
                 "no-implied-eval": "off",
                 "@typescript-eslint/no-implied-eval": "error",
                 "no-invalid-this": "off",
-                "@typescript-eslint/no-invalid-this": [
-                    "error",
-                    {
-                        capIsConstructor: false,
-                    },
-                ],
                 "no-loss-of-precision": "off",
                 "@typescript-eslint/no-loss-of-precision": "error",
                 "no-redeclare": "off",
