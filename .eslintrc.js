@@ -159,6 +159,7 @@ module.exports = {
                         format: ["camelCase", "PascalCase", "UPPER_CASE"],
                     },
                 ],
+                "@typescript-eslint/no-array-delete": "error",
                 "@typescript-eslint/no-base-to-string": "error",
                 "@typescript-eslint/no-confusing-non-null-assertion": "error",
                 "@typescript-eslint/no-confusing-void-expression": "error",
@@ -200,6 +201,7 @@ module.exports = {
                 "@typescript-eslint/non-nullable-type-assertion-style": "warn",
                 "@typescript-eslint/parameter-properties": "error",
                 "@typescript-eslint/prefer-as-const": "warn",
+                "@typescript-eslint/prefer-find": "warn",
                 "@typescript-eslint/prefer-for-of": "warn",
                 "@typescript-eslint/prefer-includes": "warn",
                 "@typescript-eslint/prefer-namespace-keyword": "warn",
@@ -231,9 +233,14 @@ module.exports = {
                 "@typescript-eslint/triple-slash-reference": "warn",
                 "@typescript-eslint/unbound-method": "error",
                 "@typescript-eslint/unified-signatures": "warn",
+                "@typescript-eslint/use-unknown-in-catch-callback-variable": "warn",
                 // TypeScript Extension Rules - https://typescript-eslint.io/rules/#extension-rules
+                "consistent-return": "off",
+                "@typescript-eslint/consistent-return": "error",
                 "default-param-last": "off",
                 "@typescript-eslint/default-param-last": "error",
+                "prefer-promise-reject-errors": "off",
+                "@typescript-eslint/prefer-promise-reject-errors": "error",
                 "no-array-constructor": "off",
                 "@typescript-eslint/no-array-constructor": "error",
                 "no-dupe-class-members": "off",
@@ -301,6 +308,7 @@ module.exports = {
             files: ["*.jsx", "*.tsx"],
             rules: {
                 // React - https://github.com/jsx-eslint/eslint-plugin-react#list-of-supported-rules
+                "react/checked-requires-onchange-or-readonly": "error",
                 "react/function-component-definition": [
                     "warn",
                     {
@@ -410,6 +418,7 @@ module.exports = {
                 "jest/prefer-comparison-matcher": "warn",
                 "jest/prefer-each": "warn",
                 "jest/prefer-equality-matcher": "warn",
+                "jest/prefer-importing-jest-globals": "error",
                 "jest/prefer-lowercase-title": [
                     "warn",
                     {
