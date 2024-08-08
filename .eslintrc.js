@@ -96,7 +96,6 @@ module.exports = {
                 "@typescript-eslint/array-type": "warn",
                 "@typescript-eslint/await-thenable": "error",
                 "@typescript-eslint/ban-ts-comment": "error",
-                "@typescript-eslint/ban-types": "error",
                 "@typescript-eslint/consistent-generic-constructors": ["warn", "constructor"],
                 "@typescript-eslint/consistent-type-assertions": [
                     "warn",
@@ -184,6 +183,7 @@ module.exports = {
                 "@typescript-eslint/no-unnecessary-boolean-literal-compare": "warn",
                 "@typescript-eslint/no-unnecessary-condition": "warn",
                 "@typescript-eslint/no-unnecessary-qualifier": "warn",
+                "@typescript-eslint/no-unnecessary-template-expression": "warn",
                 "@typescript-eslint/no-unnecessary-type-arguments": "warn",
                 "@typescript-eslint/no-unnecessary-type-assertion": "warn",
                 "@typescript-eslint/no-unnecessary-type-constraint": "warn",
@@ -191,13 +191,14 @@ module.exports = {
                 "@typescript-eslint/no-unsafe-assignment": "error",
                 "@typescript-eslint/no-unsafe-call": "error",
                 "@typescript-eslint/no-unsafe-enum-comparison": "warn",
+                "@typescript-eslint/no-unsafe-function-type": "error",
                 "@typescript-eslint/no-unsafe-declaration-merging": "error",
                 "@typescript-eslint/no-unsafe-member-access": "error",
                 "@typescript-eslint/no-unsafe-return": "error",
                 "@typescript-eslint/no-unsafe-unary-minus": "error",
                 "@typescript-eslint/no-useless-empty-export": "warn",
-                "@typescript-eslint/no-useless-template-literals": "warn",
                 "@typescript-eslint/no-var-requires": "error",
+                "@typescript-eslint/no-wrapper-object-types": "error",
                 "@typescript-eslint/non-nullable-type-assertion-style": "warn",
                 "@typescript-eslint/parameter-properties": "error",
                 "@typescript-eslint/prefer-as-const": "warn",
@@ -263,14 +264,6 @@ module.exports = {
                     "error",
                     {
                         ignoreOnInitialization: true,
-                    },
-                ],
-                "no-throw-literal": "off",
-                "@typescript-eslint/no-throw-literal": [
-                    "error",
-                    {
-                        allowThrowingAny: false,
-                        allowThrowingUnknown: false,
                     },
                 ],
                 "no-unused-expressions": "off",
@@ -364,6 +357,7 @@ module.exports = {
                     },
                 ],
                 "react/jsx-pascal-case": "warn",
+                "react/jsx-props-no-spread-multi": "warn",
                 "react/jsx-props-no-spreading": "warn",
                 "react/jsx-uses-react": "error",
                 "react/jsx-uses-vars": "error",
@@ -419,6 +413,7 @@ module.exports = {
                 "jest/prefer-each": "warn",
                 "jest/prefer-equality-matcher": "warn",
                 "jest/prefer-importing-jest-globals": "error",
+                "jest/prefer-jest-mocked": "warn",
                 "jest/prefer-lowercase-title": [
                     "warn",
                     {
