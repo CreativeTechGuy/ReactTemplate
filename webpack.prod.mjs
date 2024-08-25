@@ -5,7 +5,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import packageJson from "./package.json" assert { type: "json" };
 
-const ACCEPTABLE_LICENSES = ["MIT", "BSD-2-Clause", "BSD-3-Clause", "APACHE-2.0", "ISC", "Unlicense"];
+const ACCEPTABLE_LICENSES = ["MIT", "0BSD", "BSD-2-Clause", "BSD-3-Clause", "APACHE-2.0", "ISC", "Unlicense"];
 
 export default function () {
     return {
@@ -17,7 +17,12 @@ export default function () {
             new LicenseWebpackPlugin({
                 outputFilename: "third-party-licenses.txt",
                 unacceptableLicenseTest: (licenseIdentifier) => {
-                    return !ACCEPTABLE_LICENSES.includes(licenseIdentifier);
+                    const licenses = licenseIdentifier.replace(/[()]/g, "").split(" OR ");
+                    return licenses.every((licenseName) => {
+                        return !ACCEPTABLE_LICENSES.map((name) => name.toLowerCase()).includes(
+                            licenseName.toLowerCase()
+                        );
+                    });
                 },
                 perChunkOutput: false,
                 skipChildCompilers: true,
