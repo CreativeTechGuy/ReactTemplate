@@ -1,4 +1,4 @@
-// cspell:words setstate, eqeqeq, iife, backreference, isnan, nonoctal, textnodes, nonconstructor, typedefs
+// cspell:words setstate, eqeqeq, backreference, isnan, nonoctal, textnodes, nonconstructor, typedefs
 /* eslint-env node */
 /*
     Rules in this file are in the same order as they appear in the docs sites to make it easy to find. (Usually this is alphabetical but sometimes there's subgroups.)
@@ -10,7 +10,6 @@
         https://github.com/jest-community/eslint-plugin-jest
         https://typescript-eslint.io/rules/
         https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
-        https://github.com/gund/eslint-plugin-deprecation
 */
 
 const baseRestrictedImports = {
@@ -33,16 +32,7 @@ const baseRestrictedImports = {
 };
 
 module.exports = {
-    plugins: [
-        "@typescript-eslint",
-        "react",
-        "react-hooks",
-        "jsx-a11y",
-        "jest",
-        "testing-library",
-        "import",
-        "deprecation",
-    ],
+    plugins: ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "jest", "testing-library", "import"],
     env: {
         es2024: true,
         browser: true,
@@ -162,8 +152,10 @@ module.exports = {
                 "@typescript-eslint/no-base-to-string": "error",
                 "@typescript-eslint/no-confusing-non-null-assertion": "error",
                 "@typescript-eslint/no-confusing-void-expression": "error",
+                "@typescript-eslint/no-deprecated": "warn",
                 "@typescript-eslint/no-duplicate-type-constituents": "warn",
                 "@typescript-eslint/no-empty-interface": "warn",
+                "@typescript-eslint/no-empty-object-type": "error",
                 "@typescript-eslint/no-explicit-any": "warn",
                 "@typescript-eslint/no-extra-non-null-assertion": "error",
                 "@typescript-eslint/no-extraneous-class": "error",
@@ -250,8 +242,6 @@ module.exports = {
                 "no-implied-eval": "off",
                 "@typescript-eslint/no-implied-eval": "error",
                 "no-invalid-this": "off",
-                "no-loss-of-precision": "off",
-                "@typescript-eslint/no-loss-of-precision": "error",
                 "no-redeclare": "off",
                 "@typescript-eslint/no-redeclare": [
                     "error",
@@ -266,6 +256,14 @@ module.exports = {
                         ignoreOnInitialization: true,
                     },
                 ],
+                "no-throw-literal": "off",
+                "@typescript-eslint/only-throw-error": [
+                    "error",
+                    {
+                        allowThrowingAny: false,
+                        allowThrowingUnknown: false,
+                    },
+                ],
                 "no-unused-expressions": "off",
                 "@typescript-eslint/no-unused-expressions": [
                     "warn",
@@ -274,7 +272,13 @@ module.exports = {
                     },
                 ],
                 "no-unused-vars": "off",
-                "@typescript-eslint/no-unused-vars": "warn",
+                "@typescript-eslint/no-unused-vars": [
+                    "warn",
+                    {
+                        varsIgnorePattern: "^_",
+                        argsIgnorePattern: "^_",
+                    },
+                ],
                 "no-use-before-define": "off",
                 "@typescript-eslint/no-use-before-define": [
                     "warn",
@@ -291,8 +295,6 @@ module.exports = {
                 ],
                 "require-await": "off",
                 "@typescript-eslint/require-await": "error",
-                // Other
-                "deprecation/deprecation": "warn",
             },
         },
         {
@@ -556,7 +558,13 @@ module.exports = {
                 disallowArithmeticOperators: true,
             },
         ],
-        "no-unused-vars": "warn",
+        "no-unused-vars": [
+            "warn",
+            {
+                varsIgnorePattern: "^_",
+                argsIgnorePattern: "^_",
+            },
+        ],
         "no-use-before-define": [
             "warn",
             {
