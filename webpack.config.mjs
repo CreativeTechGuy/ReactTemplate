@@ -1,4 +1,4 @@
-import process from "process";
+import process from "node:process";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { merge as webpackMerge } from "webpack-merge";
 import webpackCommon from "./webpack.common.mjs";

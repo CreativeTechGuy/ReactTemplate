@@ -1,6 +1,5 @@
 import { jest } from "@jest/globals";
-import { userEvent } from "@testing-library/user-event";
-import type { Options, UserEvent } from "@testing-library/user-event";
+import { userEvent, type Options, type UserEvent } from "@testing-library/user-event";
 
 /**
  * Setup user-event instance with custom defaults

@@ -3,7 +3,7 @@ import HTMLMinimizerPlugin from "html-minimizer-webpack-plugin";
 import { LicenseWebpackPlugin } from "license-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import TerserPlugin from "terser-webpack-plugin";
-import packageJson from "./package.json" assert { type: "json" };
+import packageJson from "./package.json" with { type: "json" };
 
 const ACCEPTABLE_LICENSES = ["MIT", "0BSD", "BSD-2-Clause", "BSD-3-Clause", "APACHE-2.0", "ISC", "Unlicense"];
 

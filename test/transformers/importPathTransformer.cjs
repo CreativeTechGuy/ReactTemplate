@@ -1,6 +1,4 @@
-/* eslint-env node */
-
-const path = require("path");
+const path = require("node:path");
 
 module.exports = {
     process(sourceText, sourcePath) {

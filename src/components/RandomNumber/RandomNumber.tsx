@@ -1,5 +1,4 @@
-import { useState, useCallback } from "react";
-import type { ReactElement } from "react";
+import { useState, useCallback, type ReactElement } from "react";
 import { random } from "~/utils/random";
 
 type RandomNumberProps = {
