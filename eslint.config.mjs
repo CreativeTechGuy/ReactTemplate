@@ -382,7 +382,6 @@ export default [
                 },
             ],
             "@typescript-eslint/explicit-member-accessibility": "warn",
-            "@typescript-eslint/explicit-module-boundary-types": "error",
             "@typescript-eslint/method-signature-style": "warn",
             "@typescript-eslint/naming-convention": [
                 "warn",
@@ -481,7 +480,6 @@ export default [
             "@typescript-eslint/no-unsafe-declaration-merging": "error",
             "@typescript-eslint/no-unsafe-member-access": "error",
             "@typescript-eslint/no-unsafe-return": "error",
-            "@typescript-eslint/no-unsafe-type-assertion": "warn",
             "@typescript-eslint/no-unsafe-unary-minus": "error",
             "@typescript-eslint/no-useless-empty-export": "warn",
             "@typescript-eslint/no-var-requires": "error",
