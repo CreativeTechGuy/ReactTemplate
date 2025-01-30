@@ -1,3 +1,10 @@
+const packageJson = require("./package.json");
+const allPackages = {
+    ...packageJson.dependencies,
+    ...packageJson.devDependencies,
+};
+const coreJSVersion = allPackages["core-js"].match(/\d\.\d+/)[0];
+
 module.exports = (api) => {
     const isTest = api.env("test");
     const isDev = api.env("development");
@@ -9,7 +16,10 @@ module.exports = (api) => {
                 {
                     bugfixes: true,
                     useBuiltIns: "usage",
-                    corejs: 3,
+                    corejs: {
+                        version: coreJSVersion,
+                        proposals: true,
+                    },
                     shippedProposals: true,
                     ...(isTest
                         ? {
