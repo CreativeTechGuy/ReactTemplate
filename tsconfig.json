@@ -3,7 +3,7 @@
         "noEmit": true,
         "strict": true,
         "target": "ESNext",
-        "lib": ["ESNext", "DOM", "DOM.Iterable"],
+        "lib": ["ES2024", "DOM", "DOM.Iterable"],
         "allowJs": true,
         "jsx": "preserve",
         "esModuleInterop": true,
