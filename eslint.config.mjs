@@ -45,6 +45,7 @@ export default [
     {
         linterOptions: {
             reportUnusedDisableDirectives: "warn",
+            reportUnusedInlineConfigs: "warn",
         },
         languageOptions: {
             parser: typescriptEsLintParser,
@@ -286,6 +287,7 @@ export default [
                 "error",
                 {
                     extensions: [".jsx", ".tsx"],
+                    allow: "as-needed",
                 },
             ],
             // Import - https://github.com/import-js/eslint-plugin-import
@@ -454,6 +456,7 @@ export default [
             "@typescript-eslint/no-meaningless-void-operator": "warn",
             "@typescript-eslint/no-misused-new": "error",
             "@typescript-eslint/no-misused-promises": "error",
+            "@typescript-eslint/no-misused-spread": "error",
             "@typescript-eslint/no-namespace": "warn",
             "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "warn",
             "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
@@ -593,6 +596,15 @@ export default [
         },
     },
     {
+        files: ["**/*.jsx", "**/*.tsx"],
+        ignores: ["**/*.test.jsx", "**/*.test.tsx"],
+        plugins: { "jsx-a11y": jsxA11yPlugin },
+        rules: {
+            // JSX A11y - This plugin is being extended because there's an extensive amount of custom options automatically configured. - https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
+            ...jsxA11yPlugin.flatConfigs.recommended.rules,
+        },
+    },
+    {
         settings: {
             react: {
                 version: "detect",
@@ -604,8 +616,6 @@ export default [
             "jsx-a11y": jsxA11yPlugin,
         },
         rules: {
-            // JSX A11y - This plugin is being extended because there's an extensive amount of custom options automatically configured. - https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
-            ...jsxA11yPlugin.flatConfigs.recommended.rules,
             // React - https://github.com/jsx-eslint/eslint-plugin-react#list-of-supported-rules
             "react/checked-requires-onchange-or-readonly": "error",
             "react/function-component-definition": [
