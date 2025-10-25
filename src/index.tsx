@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import "~/styles/index.scss";
+import "~/styles/index.css";
 import { StrictMode } from "react";
 import reactDOMClient from "react-dom/client";
 import { App } from "~/components/App";

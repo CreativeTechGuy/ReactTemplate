@@ -25,7 +25,6 @@ export default function () {
                             },
                         },
                         "postcss-loader",
-                        "sass-loader",
                     ],
                     sideEffects: true,
                 },

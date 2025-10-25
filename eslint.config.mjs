@@ -280,8 +280,7 @@ export default [
             // Layout & Formatting - https://eslint.org/docs/latest/rules/#layout--formatting
             // ---- Nothing in this category. Defer to Prettier. ----
             // React Hooks - https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks
-            "react-hooks/rules-of-hooks": "error",
-            "react-hooks/exhaustive-deps": "error",
+            ...reactHooksPlugin.configs.flat.recommended.rules,
             // React - https://github.com/jsx-eslint/eslint-plugin-react
             "react/jsx-filename-extension": [
                 "error",
@@ -291,6 +290,7 @@ export default [
                 },
             ],
             // Import - https://github.com/import-js/eslint-plugin-import
+            "import/enforce-node-protocol-usage": ["warn", "always"],
             "import/no-duplicates": ["warn", { "prefer-inline": true }],
             "import/no-namespace": "warn",
             "import/order": [
@@ -434,7 +434,12 @@ export default [
                 },
             ],
             "@typescript-eslint/no-array-delete": "error",
-            "@typescript-eslint/no-base-to-string": "error",
+            "@typescript-eslint/no-base-to-string": [
+                "error",
+                {
+                    checkUnknown: true,
+                },
+            ],
             "@typescript-eslint/no-confusing-non-null-assertion": "error",
             "@typescript-eslint/no-confusing-void-expression": [
                 "error",
@@ -475,6 +480,7 @@ export default [
             "@typescript-eslint/no-unnecessary-type-arguments": "warn",
             "@typescript-eslint/no-unnecessary-type-assertion": "warn",
             "@typescript-eslint/no-unnecessary-type-constraint": "warn",
+            "@typescript-eslint/no-unnecessary-type-conversion": "warn",
             "@typescript-eslint/no-unsafe-argument": "error",
             "@typescript-eslint/no-unsafe-assignment": "error",
             "@typescript-eslint/no-unsafe-call": "error",
@@ -733,6 +739,7 @@ export default [
             "jest/no-test-return-statement": "error",
             "jest/prefer-comparison-matcher": "warn",
             "jest/prefer-each": "warn",
+            "jest/prefer-ending-with-an-expect": "warn",
             "jest/prefer-equality-matcher": "warn",
             "jest/prefer-importing-jest-globals": "error",
             "jest/prefer-jest-mocked": "warn",
@@ -783,6 +790,7 @@ export default [
             "testing-library/no-dom-import": ["error", "react"],
             "testing-library/no-global-regexp-flag-in-query": "warn",
             "testing-library/no-node-access": "warn",
+            "testing-library/no-test-id-queries": "warn",
             "testing-library/no-unnecessary-act": "warn",
             "testing-library/no-wait-for-multiple-assertions": "error",
             "testing-library/no-wait-for-side-effects": "error",
@@ -796,6 +804,12 @@ export default [
             "testing-library/render-result-naming-convention": "error",
             // Jest - https://github.com/jest-community/eslint-plugin-jest
             "jest/expect-expect": [
+                "warn",
+                {
+                    assertFunctionNames: ["expect", "*.getBy*", "*.getAllBy*", "*.findBy*", "*.findAllBy*"],
+                },
+            ],
+            "jest/prefer-ending-with-an-expect": [
                 "warn",
                 {
                     assertFunctionNames: ["expect", "*.getBy*", "*.getAllBy*", "*.findBy*", "*.findAllBy*"],

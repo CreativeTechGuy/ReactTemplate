@@ -35,7 +35,7 @@ export default function () {
             rules: [
                 {
                     test: /\.(s?)css$/,
-                    use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"],
+                    use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
                     sideEffects: true,
                 },
             ],

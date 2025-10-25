@@ -22,7 +22,6 @@ It also includes all of the nice-to-haves to ensure that you code is high qualit
 - [ESLint](https://eslint.org/) (Identifying and reporting errors in code)
 - [Prettier](https://prettier.io/docs/en/index.html) (Code formatter)
 - [CSpell](https://github.com/streetsidesoftware/cspell) (Code Spellchecker)
-- [SCSS](https://sass-lang.com/guide) (Enhanced CSS)
 - [Jest](https://jestjs.io/docs/en/getting-started) (Unit test framework)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) (React unit test utilities)
 - [Husky](https://typicode.github.io/husky) (Git hooks - run commands on commit)
@@ -45,6 +44,6 @@ It also includes all of the nice-to-haves to ensure that you code is high qualit
 - `npm run list-outdated-dependencies` - lists the dependencies that have newer versions available with links to their repository and changelog
 - `npm run update-dependencies` - update and install all outdated dependencies
 
-## Why use this instead of create-react-app?
+## Why use this instead of XYZ?
 
-Tools like create-react-app bring everything and the kitchen sink when setting up a new project. They are great to start quickly, but as soon as you want to customize or understand how it all works you'll have trouble. My goal is to expose all of the tools and show how easy it can be to configure from scratch. This makes it easier to debug and tweak settings to fit your needs.
+Tools that are designed for mass adoption as a quick start guide bring everything and the kitchen sink when setting up a new project. They are great to start quickly, but as soon as you want to customize or understand how it all works you'll have trouble. My goal is to expose all of the tools and show how easy it can be to configure from scratch. This makes it easier to debug and tweak settings to fit your needs. Nothing is abstracted into custom dependencies and any features which are included in this template can be easily removed/changed if you don't need them.

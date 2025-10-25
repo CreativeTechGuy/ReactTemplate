@@ -17,7 +17,7 @@ export default {
     },
     errorOnDeprecated: true,
     moduleNameMapper: {
-        "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+        "\\.(css)$": "identity-obj-proxy",
         "test/(.*)$": "<rootDir>/test/$1",
         "~/(.*)$": "<rootDir>/src/$1",
     },
