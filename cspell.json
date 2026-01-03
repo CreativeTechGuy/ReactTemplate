@@ -4,6 +4,7 @@
     "ignorePaths": ["package.json", "package-lock.json"],
     "useGitignore": true,
     "validateDirectives": true,
+    "maxFileSize": 1000000,
     "cache": {
         "useCache": true,
         "cacheLocation": "./node_modules/.cache/cspell/.cspell"

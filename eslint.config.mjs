@@ -574,6 +574,8 @@ export default [
                     enforceForJSX: true,
                 },
             ],
+            "no-unused-private-class-members": "off",
+            "@typescript-eslint/no-unused-private-class-members": "warn",
             "no-unused-vars": "off",
             "@typescript-eslint/no-unused-vars": [
                 "warn",
