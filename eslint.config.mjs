@@ -281,12 +281,14 @@ export default [
             // ---- Nothing in this category. Defer to Prettier. ----
             // React Hooks - https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks
             ...reactHooksPlugin.configs.flat.recommended.rules,
+            "react-hooks/preserve-manual-memoization": "off",
             // React - https://github.com/jsx-eslint/eslint-plugin-react
             "react/jsx-filename-extension": [
-                "error",
+                "warn",
                 {
                     extensions: [".jsx", ".tsx"],
                     allow: "as-needed",
+                    ignoreFilesWithoutCode: true,
                 },
             ],
             // Import - https://github.com/import-js/eslint-plugin-import
@@ -490,6 +492,7 @@ export default [
             "@typescript-eslint/no-unsafe-member-access": "error",
             "@typescript-eslint/no-unsafe-return": "error",
             "@typescript-eslint/no-unsafe-unary-minus": "error",
+            "@typescript-eslint/no-useless-default-assignment": "warn",
             "@typescript-eslint/no-useless-empty-export": "warn",
             "@typescript-eslint/no-var-requires": "error",
             "@typescript-eslint/no-wrapper-object-types": "error",
@@ -525,6 +528,7 @@ export default [
                     allowNullableEnum: false,
                 },
             ],
+            "@typescript-eslint/strict-void-return": "warn",
             "@typescript-eslint/switch-exhaustiveness-check": "error",
             "@typescript-eslint/triple-slash-reference": "warn",
             "@typescript-eslint/unbound-method": "error",
@@ -739,6 +743,7 @@ export default [
             "jest/no-standalone-expect": "error",
             "jest/no-test-prefixes": "warn",
             "jest/no-test-return-statement": "error",
+            "jest/no-unneeded-async-expect-function": "warn",
             "jest/prefer-comparison-matcher": "warn",
             "jest/prefer-each": "warn",
             "jest/prefer-ending-with-an-expect": "warn",
@@ -752,14 +757,18 @@ export default [
                 },
             ],
             "jest/prefer-mock-promise-shorthand": "warn",
+            "jest/prefer-mock-return-shorthand": "warn",
             "jest/prefer-spy-on": "warn",
             "jest/prefer-strict-equal": "error",
             "jest/prefer-to-be": "warn",
             "jest/prefer-to-contain": "warn",
+            "jest/prefer-to-have-been-called": "warn",
+            "jest/prefer-to-have-been-called-times": "warn",
             "jest/prefer-to-have-length": "warn",
             "jest/valid-describe-callback": "error",
             "jest/valid-expect": "error",
             "jest/valid-expect-in-promise": "error",
+            "jest/valid-mock-module-path": "error",
             "jest/valid-title": "warn",
         },
     },
@@ -773,7 +782,9 @@ export default [
             // TypeScript-specific test overrides
             "@typescript-eslint/naming-convention": "off",
             "@typescript-eslint/unbound-method": "off",
+            "jest/no-error-equal": "error",
             "jest/unbound-method": "error",
+            "jest/valid-expect-with-promise": "error",
         },
     },
     {
