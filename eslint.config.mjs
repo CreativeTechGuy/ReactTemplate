@@ -2,7 +2,8 @@
 
 import typescriptPlugin from "@typescript-eslint/eslint-plugin";
 import typescriptEsLintParser from "@typescript-eslint/parser";
-import importPlugin from "eslint-plugin-import";
+import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
+import importPlugin from "eslint-plugin-import-x";
 import jestPlugin from "eslint-plugin-jest";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import reactPlugin from "eslint-plugin-react";
@@ -15,7 +16,7 @@ import globals from "globals";
     ESLint Rule Documentation Sites:
         https://eslint.org/docs/latest/rules/
         https://github.com/jsx-eslint/eslint-plugin-react
-        https://github.com/import-js/eslint-plugin-import
+        https://github.com/un-ts/eslint-plugin-import-x#rules
         https://github.com/testing-library/eslint-plugin-testing-library
         https://github.com/jest-community/eslint-plugin-jest
         https://typescript-eslint.io/rules/
@@ -31,6 +32,12 @@ const baseRestrictedImports = {
     ],
     paths: [
         {
+            name: "react",
+            importNames: ["default"],
+            message:
+                "'import React' is not needed due to the new JSX transform: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html\n\nIf you need a named export, use: 'import { Something } from \"react\"'",
+        },
+        {
             name: ".",
             message: "Usage of local index imports is not allowed.",
         },
@@ -40,6 +47,8 @@ const baseRestrictedImports = {
         },
     ],
 };
+
+const allExtensions = ["js", "cjs", "mjs", "jsx", "ts", "cts", "mts", "tsx"];
 
 export default [
     {
@@ -60,11 +69,15 @@ export default [
         ignores: ["**/dist/**", "**/coverage/**"],
     },
     {
-        files: ["**/*.js", "**/*.cjs", "**/*.mjs", "**/*.jsx", "**/*.ts", "**/*.cts", "**/*.mts", "**/*.tsx"],
+        files: allExtensions.map((ext) => `**/*.${ext}`),
         plugins: {
-            import: importPlugin,
+            "import-x": importPlugin,
             react: reactPlugin,
             "react-hooks": reactHooksPlugin,
+        },
+        settings: {
+            "import-x/extensions": allExtensions.map((ext) => `.${ext}`),
+            "import-x/resolver-next": [createTypeScriptImportResolver()],
         },
         rules: {
             // Possible Problems - https://eslint.org/docs/latest/rules/#possible-problems
@@ -291,11 +304,10 @@ export default [
                     ignoreFilesWithoutCode: true,
                 },
             ],
-            // Import - https://github.com/import-js/eslint-plugin-import
-            "import/enforce-node-protocol-usage": ["warn", "always"],
-            "import/no-duplicates": ["warn", { "prefer-inline": true }],
-            "import/no-namespace": "warn",
-            "import/order": [
+            // Import-x - https://github.com/un-ts/eslint-plugin-import-x#rules
+            "import-x/no-duplicates": ["warn", { "prefer-inline": true }],
+            "import-x/no-namespace": "warn",
+            "import-x/order": [
                 "warn",
                 {
                     groups: ["builtin", "external", "parent", ["sibling", "internal", "index"]],
@@ -335,7 +347,7 @@ export default [
                 tsconfigRootDir: import.meta.dirname,
             },
         },
-        files: ["**/*.ts", "**/*.cts", "**/*.mts", "**/*.tsx"],
+        files: allExtensions.flatMap((ext) => (ext.includes("ts") ? [`**/*.${ext}`] : [])),
         plugins: {
             "@typescript-eslint": typescriptPlugin,
             import: importPlugin,
@@ -382,6 +394,7 @@ export default [
             "@typescript-eslint/explicit-function-return-type": [
                 "error",
                 {
+                    allowExpressions: true,
                     allowTypedFunctionExpressions: true,
                 },
             ],
@@ -689,21 +702,6 @@ export default [
             "react/jsx-props-no-spreading": "warn",
             "react/jsx-uses-react": "error",
             "react/jsx-uses-vars": "error",
-            // Other
-            "no-restricted-imports": [
-                "warn",
-                {
-                    ...baseRestrictedImports,
-                    paths: [
-                        {
-                            name: "react",
-                            importNames: ["default"],
-                            message:
-                                "'import React' is not needed due to the new JSX transform: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html\n\nIf you need a named export, use: 'import { Something } from \"react\"'",
-                        },
-                    ],
-                },
-            ],
         },
     },
     {
