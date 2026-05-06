@@ -3,7 +3,7 @@
         "noEmit": true,
         "strict": true,
         "target": "ESNext",
-        "lib": ["ES2024", "DOM", "DOM.Iterable"],
+        "lib": ["ES2025", "DOM", "DOM.Iterable"],
         "allowJs": true,
         "jsx": "preserve",
         "esModuleInterop": true,
@@ -14,11 +14,10 @@
         "noImplicitOverride": true,
         "verbatimModuleSyntax": true,
         "paths": {
-            "test/*": ["test/*"],
-            "~/*": ["src/*"]
+            "test/*": ["./test/*"],
+            "~/*": ["./src/*"]
         },
-        "typeRoots": ["src/types", "node_modules/@types"],
-        "baseUrl": "."
+        "types": ["node"]
     },
     "include": ["src", "test"]
 }
